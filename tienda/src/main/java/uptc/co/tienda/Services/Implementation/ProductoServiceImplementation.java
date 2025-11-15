@@ -1,5 +1,65 @@
 package uptc.co.tienda.Services.Implementation;
 
-public class ProductoServiceImplementation {
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
+
+import uptc.co.tienda.Entities.ProductoEntity;
+import uptc.co.tienda.Mangement.ProductoManagement;
+import uptc.co.tienda.Services.ProductoService;
+
+@Service
+public class ProductoServiceImplementation implements ProductoService{
+
+    @Autowired
+	@Qualifier("CrudProducto")
+	private ProductoManagement pm;
+ 
+    //-------Todos los produtcos admin
+    @Override
+    public List<ProductoEntity> getListProducto() {
+        return (List<ProductoEntity>) pm.findAll();
+    }
+
+    //-------Buscar productos por cantidad
+    @Override
+    public List<ProductoEntity> buscarProductos(int cantidad) {
+          return pm.findByCantidad(cantidad); 
+    }
+    
+
+    @Override
+    public ProductoEntity saveProducto(ProductoEntity productoEntity) {
+         return pm.save(productoEntity);    
+    }
+
+    @Override
+    public ProductoEntity updateProducto(ProductoEntity productoEntity) {
+        return pm.save(productoEntity);
+    }
+
+    @Override
+    public void deleteProducto(int codigo) {
+        pm.deleteById(codigo);
+    }
+
+    @Override
+    public ProductoEntity getProductoCodigo(int codigo) {
+       return pm.findById(codigo).orElseThrow(()->new IllegalArgumentException("El producto no existe"));
+    }
+
+    @Override
+    public List<ProductoEntity> listaProductosCatalogo() {
+        return pm.findByCantidadNot(0);
+    }
+
+    @Override
+    public List<ProductoEntity> buscarProductosNombre(String nombre) {
+         return pm.findByNombreContainingIgnoreCaseOrDescripcionContainingIgnoreCase(nombre, nombre);
+    }
+
+    
 
 }

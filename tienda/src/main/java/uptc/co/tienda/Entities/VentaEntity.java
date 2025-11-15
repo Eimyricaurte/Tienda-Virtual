@@ -18,7 +18,7 @@ public class VentaEntity {
      @Id
      @GeneratedValue(strategy = GenerationType.IDENTITY)
      @Column(name="Id" )
-    private int id;
+     private int id;
 
  
     @ManyToOne
@@ -46,6 +46,17 @@ public class VentaEntity {
 
 
 
+//  -------Editar cantidad de un producto en el carro
+    public VentaEntity(int id, int cantidad, double precioTotal) {
+        this.id = id;
+        this.cantidad = cantidad;
+        this.precioTotal = precioTotal;
+    }
+
+
+
+
+   //-----------Registra compra de un producto
 
     public VentaEntity(int id, FacturaEntity facturaEntity, ProductoEntity producto, int cantidad, double precioTotal) {
         this.id = id;
@@ -54,6 +65,10 @@ public class VentaEntity {
         this.cantidad = cantidad;
         this.precioTotal = precioTotal;
     }
+
+
+
+    
 
 
 

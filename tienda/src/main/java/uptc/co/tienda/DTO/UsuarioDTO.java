@@ -20,14 +20,14 @@ public class UsuarioDTO {
     public UsuarioDTO(String mensaje) {
         this.mensaje = mensaje;
     }
-    public UsuarioDTO(String mensaje, List<UsuarioEntity> lista) {
-        this.mensaje = mensaje;
+    public UsuarioDTO(List<UsuarioEntity> lista) {
         this.lista = lista;
     }
-    public UsuarioDTO(String mensaje, UsuarioEntity estudianteEntity) {
-        this.mensaje = mensaje;
+    public UsuarioDTO(UsuarioEntity estudianteEntity) {
         this.estudianteEntity = estudianteEntity;
     }
+
+    
     public String getMensaje() {
         return mensaje;
     }

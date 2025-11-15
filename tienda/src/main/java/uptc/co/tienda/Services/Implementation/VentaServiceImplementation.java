@@ -36,9 +36,22 @@ public class VentaServiceImplementation implements VentaService {
     }
 
     @Override
-    public List<VentaEntity> findByFactura_CodigoFactura(int codigo) {
-        return vm.findByFacturaEntity_CodigoFactura(codigo);
+    public VentaEntity getVentaId(int id) {
+            VentaEntity venta=vm.findById(id).orElseThrow(()->new IllegalArgumentException("El producto no existe")); 
+            return venta;
     }
 
+    @Override
+    public void deleteVenta(int id){
+        // Eliminar de la base de datos
+        vm.deleteById(id);
+    }
+
+    @Override
+    public void updateVentaCantidad(VentaEntity venta) {
+        vm.save(venta);
+        
+    }
+    
 
 }

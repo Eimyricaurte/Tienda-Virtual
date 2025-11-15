@@ -41,13 +41,13 @@ public class UsuarioController {
 	@GetMapping(path="/listar/",produces= MediaType.APPLICATION_JSON_VALUE)
 	public UsuarioDTO listar(){
 		logger.info("El usuario ingreso al sistema");
-		return new UsuarioDTO("Listado Usuarios", usi.getListUsuario());
+		return new UsuarioDTO(usi.getListUsuario());
 	}
 
 	@PostMapping("/save/")
     public UsuarioDTO save(@RequestBody UsuarioEntity usuarioEntity){
 		logger.info("El usuario ingreso al sistema--Registrar ---");
-        return new UsuarioDTO("Usuario registrado correctamente",usi.saveUsuario(usuarioEntity));
+        return new UsuarioDTO(usi.saveUsuario(usuarioEntity));
     }
 
 	@PutMapping("/update/")
@@ -59,12 +59,10 @@ public class UsuarioController {
 			existtingUsuario.setNombre(usuarioEntity.getNombre());
 			existtingUsuario.setClave(usuarioEntity.getClave());
 			existtingUsuario.setTelefono(usuarioEntity.getTelefono());
-			return new UsuarioDTO("Estudiante editado correctamente",usi.updateUsuario(existtingUsuario));
+			return new UsuarioDTO(usi.updateUsuario(existtingUsuario));
 		}catch(Exception e){
 			 return new UsuarioDTO(e.getMessage());
-		}
-		 
-        
+		}  
     }
 	
 	@DeleteMapping("/delete/{id}")
@@ -73,7 +71,7 @@ public class UsuarioController {
 		try{
 		UsuarioEntity existtingEstudiante=usi.getUsuarioId(correo);
 		usi.deleteUsuario(correo);
-		return new UsuarioDTO("Eliminado", existtingEstudiante);
+		return new UsuarioDTO(existtingEstudiante);
 	    }catch(Exception e){
 			 return new UsuarioDTO(e.getMessage());
 		}
@@ -83,7 +81,7 @@ public class UsuarioController {
 	public UsuarioDTO getUsuarioPorCorreo(@PathVariable String correo) {
 		try {
 			UsuarioEntity usuario = usi.getUsuarioId(correo);
-			return new UsuarioDTO("Usuario", usuario); // Devuelve el usuario encontrado
+			return new UsuarioDTO(usuario); // Devuelve el usuario encontrado
 		} catch (IllegalArgumentException e) {
 			return new UsuarioDTO(e.getMessage()); // Mensaje: "El estudiante no existe"
 		} 

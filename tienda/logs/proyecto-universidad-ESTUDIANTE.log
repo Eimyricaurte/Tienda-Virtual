@@ -1,22 +1,22 @@
-2025-11-10 10:45:34  INFO [main] uptc.co.tienda.TiendaApplication - Starting TiendaApplication using Java 17.0.8 with PID 10032 (D:\SpringBoot\tienda\target\classes started by ASUS in D:\SpringBoot\tienda)
-2025-11-10 10:45:34  INFO [main] uptc.co.tienda.TiendaApplication - No active profile set, falling back to 1 default profile: "default"
-2025-11-10 10:45:36  INFO [main] org.springframework.data.repository.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2025-11-10 10:45:36  INFO [main] org.springframework.data.repository.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 113 ms. Found 3 JPA repository interfaces.
-2025-11-10 10:45:38  INFO [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port 8081 (http)
-2025-11-10 10:45:38  INFO [main] org.apache.catalina.core.StandardService - Starting service [Tomcat]
-2025-11-10 10:45:38  INFO [main] org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.48]
-2025-11-10 10:45:38  INFO [main] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
-2025-11-10 10:45:38  INFO [main] org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 4056 ms
-2025-11-10 10:45:38  INFO [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
-2025-11-10 10:45:39  INFO [main] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@51e7589f
-2025-11-10 10:45:39  INFO [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
-2025-11-10 10:45:39  INFO [main] org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
-2025-11-10 10:45:39  INFO [main] org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.33.Final
-2025-11-10 10:45:39  INFO [main] org.hibernate.cache.internal.RegionFactoryInitiator - HHH000026: Second-level cache disabled
-2025-11-10 10:45:40  INFO [main] org.springframework.orm.jpa.persistenceunit.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
-2025-11-10 10:45:41  WARN [main] org.hibernate.orm.deprecation - HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2025-11-10 10:45:41  WARN [main] org.hibernate.orm.deprecation - HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
-2025-11-10 10:45:41  INFO [main] org.hibernate.orm.connections.pooling - HHH10001005: Database info:
+2025-11-15 00:14:18  INFO [main] uptc.co.tienda.TiendaApplication - Starting TiendaApplication using Java 17.0.8 with PID 3532 (D:\SpringBoot\TiendaBackend\tienda\target\classes started by ASUS in D:\SpringBoot\TiendaBackend\tienda)
+2025-11-15 00:14:18  INFO [main] uptc.co.tienda.TiendaApplication - No active profile set, falling back to 1 default profile: "default"
+2025-11-15 00:14:21  INFO [main] org.springframework.data.repository.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-11-15 00:14:21  INFO [main] org.springframework.data.repository.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 346 ms. Found 4 JPA repository interfaces.
+2025-11-15 00:14:23  INFO [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port 8081 (http)
+2025-11-15 00:14:23  INFO [main] org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2025-11-15 00:14:23  INFO [main] org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.48]
+2025-11-15 00:14:24  INFO [main] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-11-15 00:14:24  INFO [main] org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 5167 ms
+2025-11-15 00:14:24  INFO [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-11-15 00:14:25  INFO [main] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6b0f266e
+2025-11-15 00:14:25  INFO [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-11-15 00:14:25  INFO [main] org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-11-15 00:14:25  INFO [main] org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.33.Final
+2025-11-15 00:14:25  INFO [main] org.hibernate.cache.internal.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-11-15 00:14:26  INFO [main] org.springframework.orm.jpa.persistenceunit.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-11-15 00:14:26  WARN [main] org.hibernate.orm.deprecation - HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-11-15 00:14:26  WARN [main] org.hibernate.orm.deprecation - HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2025-11-15 00:14:26  INFO [main] org.hibernate.orm.connections.pooling - HHH10001005: Database info:
 	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
 	Database driver: undefined/unknown
 	Database version: 8.0
@@ -24,35 +24,34 @@
 	Isolation level: undefined/unknown
 	Minimum pool size: undefined/unknown
 	Maximum pool size: undefined/unknown
-2025-11-10 10:45:42  INFO [main] org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2025-11-10 10:45:42  INFO [main] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
-2025-11-10 10:45:43  WARN [main] org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2025-11-10 10:45:43  INFO [main] org.springframework.validation.beanvalidation.OptionalValidatorFactoryBean - Failed to set up a Bean Validation provider: jakarta.validation.NoProviderFoundException: Unable to create a Configuration, because no Jakarta Bean Validation provider could be found. Add a provider like Hibernate Validator (RI) to your classpath.
-2025-11-10 10:45:44  INFO [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port 8081 (http) with context path '/'
-2025-11-10 10:45:44  INFO [main] uptc.co.tienda.TiendaApplication - Started TiendaApplication in 11.969 seconds (process running for 12.735)
-2025-11-10 10:45:56  INFO [http-nio-8081-exec-1] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
-2025-11-10 10:45:57  INFO [http-nio-8081-exec-1] org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
-2025-11-10 10:45:57  INFO [http-nio-8081-exec-1] org.springframework.web.servlet.DispatcherServlet - Completed initialization in 0 ms
-2025-11-10 10:45:57  INFO [http-nio-8081-exec-1] uptc.co.tienda.Controller.VentaController - El usuario ingreso al sistema--Registrar ---
-2025-11-10 10:50:01  INFO [main] uptc.co.tienda.TiendaApplication - Starting TiendaApplication using Java 17.0.8 with PID 1304 (D:\SpringBoot\tienda\target\classes started by ASUS in D:\SpringBoot\tienda)
-2025-11-10 10:50:01  INFO [main] uptc.co.tienda.TiendaApplication - No active profile set, falling back to 1 default profile: "default"
-2025-11-10 10:50:03  INFO [main] org.springframework.data.repository.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2025-11-10 10:50:03  INFO [main] org.springframework.data.repository.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 116 ms. Found 3 JPA repository interfaces.
-2025-11-10 10:50:04  INFO [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port 8081 (http)
-2025-11-10 10:50:04  INFO [main] org.apache.catalina.core.StandardService - Starting service [Tomcat]
-2025-11-10 10:50:04  INFO [main] org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.48]
-2025-11-10 10:50:04  INFO [main] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
-2025-11-10 10:50:04  INFO [main] org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 3108 ms
-2025-11-10 10:50:04  INFO [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
-2025-11-10 10:50:05  INFO [main] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@65cc5252
-2025-11-10 10:50:05  INFO [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
-2025-11-10 10:50:05  INFO [main] org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
-2025-11-10 10:50:06  INFO [main] org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.33.Final
-2025-11-10 10:50:06  INFO [main] org.hibernate.cache.internal.RegionFactoryInitiator - HHH000026: Second-level cache disabled
-2025-11-10 10:50:06  INFO [main] org.springframework.orm.jpa.persistenceunit.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
-2025-11-10 10:50:06  WARN [main] org.hibernate.orm.deprecation - HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2025-11-10 10:50:06  WARN [main] org.hibernate.orm.deprecation - HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
-2025-11-10 10:50:07  INFO [main] org.hibernate.orm.connections.pooling - HHH10001005: Database info:
+2025-11-15 00:14:28  INFO [main] org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-11-15 00:14:28  INFO [main] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-11-15 00:14:29  WARN [main] org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-11-15 00:14:29  INFO [main] org.springframework.validation.beanvalidation.OptionalValidatorFactoryBean - Failed to set up a Bean Validation provider: jakarta.validation.NoProviderFoundException: Unable to create a Configuration, because no Jakarta Bean Validation provider could be found. Add a provider like Hibernate Validator (RI) to your classpath.
+2025-11-15 00:14:30  INFO [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port 8081 (http) with context path '/'
+2025-11-15 00:14:30  INFO [main] uptc.co.tienda.TiendaApplication - Started TiendaApplication in 12.215 seconds (process running for 12.752)
+2025-11-15 00:14:39  INFO [http-nio-8081-exec-1] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-11-15 00:14:39  INFO [http-nio-8081-exec-1] org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-11-15 00:14:39  INFO [http-nio-8081-exec-1] org.springframework.web.servlet.DispatcherServlet - Completed initialization in 2 ms
+2025-11-15 00:17:48  INFO [main] uptc.co.tienda.TiendaApplication - Starting TiendaApplication using Java 17.0.8 with PID 128 (D:\SpringBoot\TiendaBackend\tienda\target\classes started by ASUS in D:\SpringBoot\TiendaBackend\tienda)
+2025-11-15 00:17:48  INFO [main] uptc.co.tienda.TiendaApplication - No active profile set, falling back to 1 default profile: "default"
+2025-11-15 00:17:50  INFO [main] org.springframework.data.repository.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-11-15 00:17:50  INFO [main] org.springframework.data.repository.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 121 ms. Found 4 JPA repository interfaces.
+2025-11-15 00:17:51  INFO [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port 8081 (http)
+2025-11-15 00:17:51  INFO [main] org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2025-11-15 00:17:51  INFO [main] org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.48]
+2025-11-15 00:17:52  INFO [main] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-11-15 00:17:52  INFO [main] org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 3255 ms
+2025-11-15 00:17:52  INFO [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-11-15 00:17:53  INFO [main] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@63e5b8aa
+2025-11-15 00:17:53  INFO [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-11-15 00:17:53  INFO [main] org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-11-15 00:17:53  INFO [main] org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.33.Final
+2025-11-15 00:17:53  INFO [main] org.hibernate.cache.internal.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-11-15 00:17:54  INFO [main] org.springframework.orm.jpa.persistenceunit.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-11-15 00:17:54  WARN [main] org.hibernate.orm.deprecation - HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-11-15 00:17:54  WARN [main] org.hibernate.orm.deprecation - HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2025-11-15 00:17:54  INFO [main] org.hibernate.orm.connections.pooling - HHH10001005: Database info:
 	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
 	Database driver: undefined/unknown
 	Database version: 8.0
@@ -60,37 +59,34 @@
 	Isolation level: undefined/unknown
 	Minimum pool size: undefined/unknown
 	Maximum pool size: undefined/unknown
-2025-11-10 10:50:08  INFO [main] org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2025-11-10 10:50:08  INFO [main] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
-2025-11-10 10:50:09  WARN [main] org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2025-11-10 10:50:09  INFO [main] org.springframework.validation.beanvalidation.OptionalValidatorFactoryBean - Failed to set up a Bean Validation provider: jakarta.validation.NoProviderFoundException: Unable to create a Configuration, because no Jakarta Bean Validation provider could be found. Add a provider like Hibernate Validator (RI) to your classpath.
-2025-11-10 10:50:10  INFO [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port 8081 (http) with context path '/'
-2025-11-10 10:50:10  INFO [main] uptc.co.tienda.TiendaApplication - Started TiendaApplication in 10.746 seconds (process running for 11.353)
-2025-11-10 10:52:43  INFO [http-nio-8081-exec-2] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
-2025-11-10 10:52:43  INFO [http-nio-8081-exec-2] org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
-2025-11-10 10:52:43  INFO [http-nio-8081-exec-2] org.springframework.web.servlet.DispatcherServlet - Completed initialization in 3 ms
-2025-11-10 10:52:44  INFO [http-nio-8081-exec-2] uptc.co.tienda.Controller.VentaController - El usuario ingreso al sistema--Registrar ---
-2025-11-10 10:53:17  INFO [http-nio-8081-exec-3] uptc.co.tienda.Controller.VentaController - El usuario ingreso al sistema--Registrar ---
-2025-11-10 10:59:27  INFO [http-nio-8081-exec-10] uptc.co.tienda.Controller.VentaController - El usuario ingreso al sistema--Registrar ---
-2025-11-10 11:13:53  INFO [main] uptc.co.tienda.TiendaApplication - Starting TiendaApplication using Java 17.0.8 with PID 2016 (D:\SpringBoot\tienda\target\classes started by ASUS in D:\SpringBoot\tienda)
-2025-11-10 11:13:53  INFO [main] uptc.co.tienda.TiendaApplication - No active profile set, falling back to 1 default profile: "default"
-2025-11-10 11:13:55  INFO [main] org.springframework.data.repository.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2025-11-10 11:13:56  INFO [main] org.springframework.data.repository.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 143 ms. Found 3 JPA repository interfaces.
-2025-11-10 11:13:57  INFO [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port 8081 (http)
-2025-11-10 11:13:57  INFO [main] org.apache.catalina.core.StandardService - Starting service [Tomcat]
-2025-11-10 11:13:57  INFO [main] org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.48]
-2025-11-10 11:13:57  INFO [main] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
-2025-11-10 11:13:57  INFO [main] org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 3565 ms
-2025-11-10 11:13:57  INFO [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
-2025-11-10 11:13:58  INFO [main] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@42c12b3e
-2025-11-10 11:13:58  INFO [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
-2025-11-10 11:13:58  INFO [main] org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
-2025-11-10 11:13:58  INFO [main] org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.33.Final
-2025-11-10 11:13:58  INFO [main] org.hibernate.cache.internal.RegionFactoryInitiator - HHH000026: Second-level cache disabled
-2025-11-10 11:13:59  INFO [main] org.springframework.orm.jpa.persistenceunit.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
-2025-11-10 11:13:59  WARN [main] org.hibernate.orm.deprecation - HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2025-11-10 11:13:59  WARN [main] org.hibernate.orm.deprecation - HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
-2025-11-10 11:13:59  INFO [main] org.hibernate.orm.connections.pooling - HHH10001005: Database info:
+2025-11-15 00:17:55  INFO [main] org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-11-15 00:17:55  INFO [main] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-11-15 00:17:56  WARN [main] org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-11-15 00:17:56  INFO [main] org.springframework.validation.beanvalidation.OptionalValidatorFactoryBean - Failed to set up a Bean Validation provider: jakarta.validation.NoProviderFoundException: Unable to create a Configuration, because no Jakarta Bean Validation provider could be found. Add a provider like Hibernate Validator (RI) to your classpath.
+2025-11-15 00:17:58  INFO [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port 8081 (http) with context path '/'
+2025-11-15 00:17:58  INFO [main] uptc.co.tienda.TiendaApplication - Started TiendaApplication in 10.512 seconds (process running for 11.294)
+2025-11-15 00:18:05  INFO [http-nio-8081-exec-1] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-11-15 00:18:05  INFO [http-nio-8081-exec-1] org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-11-15 00:18:05  INFO [http-nio-8081-exec-1] org.springframework.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2025-11-15 00:23:49  INFO [main] uptc.co.tienda.TiendaApplication - Starting TiendaApplication using Java 17.0.8 with PID 1556 (D:\SpringBoot\TiendaBackend\tienda\target\classes started by ASUS in D:\SpringBoot\TiendaBackend\tienda)
+2025-11-15 00:23:49  INFO [main] uptc.co.tienda.TiendaApplication - No active profile set, falling back to 1 default profile: "default"
+2025-11-15 00:23:51  INFO [main] org.springframework.data.repository.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-11-15 00:23:52  INFO [main] org.springframework.data.repository.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 175 ms. Found 4 JPA repository interfaces.
+2025-11-15 00:23:53  INFO [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port 8081 (http)
+2025-11-15 00:23:53  INFO [main] org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2025-11-15 00:23:53  INFO [main] org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.48]
+2025-11-15 00:23:54  INFO [main] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-11-15 00:23:54  INFO [main] org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 4102 ms
+2025-11-15 00:23:54  INFO [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-11-15 00:23:54  INFO [main] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6870cfac
+2025-11-15 00:23:54  INFO [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-11-15 00:23:54  INFO [main] org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-11-15 00:23:55  INFO [main] org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.33.Final
+2025-11-15 00:23:55  INFO [main] org.hibernate.cache.internal.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-11-15 00:23:55  INFO [main] org.springframework.orm.jpa.persistenceunit.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-11-15 00:23:56  WARN [main] org.hibernate.orm.deprecation - HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-11-15 00:23:56  WARN [main] org.hibernate.orm.deprecation - HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2025-11-15 00:23:56  INFO [main] org.hibernate.orm.connections.pooling - HHH10001005: Database info:
 	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
 	Database driver: undefined/unknown
 	Database version: 8.0
@@ -98,18 +94,153 @@
 	Isolation level: undefined/unknown
 	Minimum pool size: undefined/unknown
 	Maximum pool size: undefined/unknown
-2025-11-10 11:14:01  INFO [main] org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2025-11-10 11:14:01  INFO [main] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
-2025-11-10 11:14:02  WARN [main] org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2025-11-10 11:14:02  INFO [main] org.springframework.validation.beanvalidation.OptionalValidatorFactoryBean - Failed to set up a Bean Validation provider: jakarta.validation.NoProviderFoundException: Unable to create a Configuration, because no Jakarta Bean Validation provider could be found. Add a provider like Hibernate Validator (RI) to your classpath.
-2025-11-10 11:14:03  INFO [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port 8081 (http) with context path '/'
-2025-11-10 11:14:03  INFO [main] uptc.co.tienda.TiendaApplication - Started TiendaApplication in 10.459 seconds (process running for 11.119)
-2025-11-10 11:19:58  INFO [http-nio-8081-exec-3] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
-2025-11-10 11:19:58  INFO [http-nio-8081-exec-3] org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
-2025-11-10 11:19:58  INFO [http-nio-8081-exec-3] org.springframework.web.servlet.DispatcherServlet - Completed initialization in 3 ms
-2025-11-10 11:19:58  WARN [http-nio-8081-exec-3] org.springframework.web.servlet.mvc.support.DefaultHandlerExceptionResolver - Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' is not supported]
-2025-11-10 11:21:32  INFO [http-nio-8081-exec-10] uptc.co.tienda.Controller.VentaController - El usuario ingreso al sistema--Registrar ---
-2025-11-10 11:21:50  INFO [http-nio-8081-exec-2] uptc.co.tienda.Controller.VentaController - El usuario ingreso al sistema--Registrar ---
-2025-11-10 11:24:20  WARN [http-nio-8081-exec-5] org.springframework.web.servlet.mvc.support.DefaultHandlerExceptionResolver - Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' is not supported]
-2025-11-10 11:24:34  WARN [http-nio-8081-exec-7] org.springframework.web.servlet.mvc.support.DefaultHandlerExceptionResolver - Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' is not supported]
-2025-11-10 11:26:10  WARN [http-nio-8081-exec-1] org.springframework.web.servlet.mvc.support.DefaultHandlerExceptionResolver - Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' is not supported]
+2025-11-15 00:23:57  INFO [main] org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-11-15 00:23:57  INFO [main] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-11-15 00:23:58  WARN [main] org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-11-15 00:23:59  INFO [main] org.springframework.validation.beanvalidation.OptionalValidatorFactoryBean - Failed to set up a Bean Validation provider: jakarta.validation.NoProviderFoundException: Unable to create a Configuration, because no Jakarta Bean Validation provider could be found. Add a provider like Hibernate Validator (RI) to your classpath.
+2025-11-15 00:23:59  INFO [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port 8081 (http) with context path '/'
+2025-11-15 00:23:59  INFO [main] uptc.co.tienda.TiendaApplication - Started TiendaApplication in 11.147 seconds (process running for 11.797)
+2025-11-15 00:24:04  INFO [http-nio-8081-exec-1] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-11-15 00:24:04  INFO [http-nio-8081-exec-1] org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-11-15 00:24:04  INFO [http-nio-8081-exec-1] org.springframework.web.servlet.DispatcherServlet - Completed initialization in 2 ms
+2025-11-15 00:32:50  INFO [main] uptc.co.tienda.TiendaApplication - Starting TiendaApplication using Java 17.0.8 with PID 9884 (D:\SpringBoot\TiendaBackend\tienda\target\classes started by ASUS in D:\SpringBoot\TiendaBackend\tienda)
+2025-11-15 00:32:50  INFO [main] uptc.co.tienda.TiendaApplication - No active profile set, falling back to 1 default profile: "default"
+2025-11-15 00:32:52  INFO [main] org.springframework.data.repository.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-11-15 00:32:52  INFO [main] org.springframework.data.repository.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 219 ms. Found 4 JPA repository interfaces.
+2025-11-15 00:32:54  INFO [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port 8081 (http)
+2025-11-15 00:32:54  INFO [main] org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2025-11-15 00:32:54  INFO [main] org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.48]
+2025-11-15 00:32:55  INFO [main] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-11-15 00:32:55  INFO [main] org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 4645 ms
+2025-11-15 00:32:55  INFO [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-11-15 00:32:56  INFO [main] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@63e5b8aa
+2025-11-15 00:32:56  INFO [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-11-15 00:32:57  INFO [main] org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-11-15 00:32:57  INFO [main] org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.33.Final
+2025-11-15 00:32:57  INFO [main] org.hibernate.cache.internal.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-11-15 00:32:58  INFO [main] org.springframework.orm.jpa.persistenceunit.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-11-15 00:32:58  WARN [main] org.hibernate.orm.deprecation - HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-11-15 00:32:58  WARN [main] org.hibernate.orm.deprecation - HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2025-11-15 00:32:58  INFO [main] org.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 8.0
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-11-15 00:33:00  INFO [main] org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-11-15 00:33:00  INFO [main] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-11-15 00:33:01  WARN [main] org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-11-15 00:33:01  INFO [main] org.springframework.validation.beanvalidation.OptionalValidatorFactoryBean - Failed to set up a Bean Validation provider: jakarta.validation.NoProviderFoundException: Unable to create a Configuration, because no Jakarta Bean Validation provider could be found. Add a provider like Hibernate Validator (RI) to your classpath.
+2025-11-15 00:33:02  INFO [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port 8081 (http) with context path '/'
+2025-11-15 00:33:02  INFO [main] uptc.co.tienda.TiendaApplication - Started TiendaApplication in 13.079 seconds (process running for 13.741)
+2025-11-15 00:39:07  INFO [http-nio-8081-exec-1] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-11-15 00:39:07  INFO [http-nio-8081-exec-1] org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-11-15 00:39:07  INFO [http-nio-8081-exec-1] org.springframework.web.servlet.DispatcherServlet - Completed initialization in 9 ms
+2025-11-15 00:40:37  INFO [main] uptc.co.tienda.TiendaApplication - Starting TiendaApplication using Java 17.0.8 with PID 3028 (D:\SpringBoot\TiendaBackend\tienda\target\classes started by ASUS in D:\SpringBoot\TiendaBackend\tienda)
+2025-11-15 00:40:37  INFO [main] uptc.co.tienda.TiendaApplication - No active profile set, falling back to 1 default profile: "default"
+2025-11-15 00:40:39  INFO [main] org.springframework.data.repository.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-11-15 00:40:40  INFO [main] org.springframework.data.repository.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 165 ms. Found 4 JPA repository interfaces.
+2025-11-15 00:40:42  INFO [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port 8081 (http)
+2025-11-15 00:40:42  INFO [main] org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2025-11-15 00:40:42  INFO [main] org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.48]
+2025-11-15 00:40:42  INFO [main] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-11-15 00:40:42  INFO [main] org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 5018 ms
+2025-11-15 00:40:42  INFO [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-11-15 00:40:43  INFO [main] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2c9306d3
+2025-11-15 00:40:43  INFO [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-11-15 00:40:43  INFO [main] org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-11-15 00:40:43  INFO [main] org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.33.Final
+2025-11-15 00:40:43  INFO [main] org.hibernate.cache.internal.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-11-15 00:40:44  INFO [main] org.springframework.orm.jpa.persistenceunit.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-11-15 00:40:44  WARN [main] org.hibernate.orm.deprecation - HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-11-15 00:40:44  WARN [main] org.hibernate.orm.deprecation - HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2025-11-15 00:40:44  INFO [main] org.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 8.0
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-11-15 00:40:46  INFO [main] org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-11-15 00:40:46  INFO [main] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-11-15 00:40:47  WARN [main] org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-11-15 00:40:48  INFO [main] org.springframework.validation.beanvalidation.OptionalValidatorFactoryBean - Failed to set up a Bean Validation provider: jakarta.validation.NoProviderFoundException: Unable to create a Configuration, because no Jakarta Bean Validation provider could be found. Add a provider like Hibernate Validator (RI) to your classpath.
+2025-11-15 00:40:49  INFO [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port 8081 (http) with context path '/'
+2025-11-15 00:40:49  INFO [main] uptc.co.tienda.TiendaApplication - Started TiendaApplication in 13.452 seconds (process running for 14.107)
+2025-11-15 00:41:31  INFO [http-nio-8081-exec-1] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-11-15 00:41:31  INFO [http-nio-8081-exec-1] org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-11-15 00:41:31  INFO [http-nio-8081-exec-1] org.springframework.web.servlet.DispatcherServlet - Completed initialization in 9 ms
+2025-11-15 00:45:44  INFO [main] uptc.co.tienda.TiendaApplication - Starting TiendaApplication using Java 17.0.8 with PID 7172 (D:\SpringBoot\TiendaBackend\tienda\target\classes started by ASUS in D:\SpringBoot\TiendaBackend\tienda)
+2025-11-15 00:45:44  INFO [main] uptc.co.tienda.TiendaApplication - No active profile set, falling back to 1 default profile: "default"
+2025-11-15 00:45:47  INFO [main] org.springframework.data.repository.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-11-15 00:45:47  INFO [main] org.springframework.data.repository.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 202 ms. Found 4 JPA repository interfaces.
+2025-11-15 00:45:49  INFO [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port 8081 (http)
+2025-11-15 00:45:49  INFO [main] org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2025-11-15 00:45:49  INFO [main] org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.48]
+2025-11-15 00:45:49  INFO [main] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-11-15 00:45:49  INFO [main] org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 4867 ms
+2025-11-15 00:45:50  INFO [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-11-15 00:45:50  INFO [main] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2dfa02c1
+2025-11-15 00:45:50  INFO [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-11-15 00:45:50  INFO [main] org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-11-15 00:45:50  INFO [main] org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.33.Final
+2025-11-15 00:45:51  INFO [main] org.hibernate.cache.internal.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-11-15 00:45:51  INFO [main] org.springframework.orm.jpa.persistenceunit.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-11-15 00:45:52  WARN [main] org.hibernate.orm.deprecation - HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-11-15 00:45:52  WARN [main] org.hibernate.orm.deprecation - HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2025-11-15 00:45:52  INFO [main] org.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 8.0
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-11-15 00:45:53  INFO [main] org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-11-15 00:45:53  INFO [main] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-11-15 00:45:54  WARN [main] org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-11-15 00:45:55  INFO [main] org.springframework.validation.beanvalidation.OptionalValidatorFactoryBean - Failed to set up a Bean Validation provider: jakarta.validation.NoProviderFoundException: Unable to create a Configuration, because no Jakarta Bean Validation provider could be found. Add a provider like Hibernate Validator (RI) to your classpath.
+2025-11-15 00:45:56  INFO [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port 8081 (http) with context path '/'
+2025-11-15 00:45:56  INFO [main] uptc.co.tienda.TiendaApplication - Started TiendaApplication in 12.638 seconds (process running for 13.214)
+2025-11-15 00:46:36  INFO [http-nio-8081-exec-1] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-11-15 00:46:36  INFO [http-nio-8081-exec-1] org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-11-15 00:46:36  INFO [http-nio-8081-exec-1] org.springframework.web.servlet.DispatcherServlet - Completed initialization in 3 ms
+2025-11-15 00:53:55  INFO [main] uptc.co.tienda.TiendaApplication - Starting TiendaApplication using Java 17.0.8 with PID 4032 (D:\SpringBoot\TiendaBackend\tienda\target\classes started by ASUS in D:\SpringBoot\TiendaBackend\tienda)
+2025-11-15 00:53:55  INFO [main] uptc.co.tienda.TiendaApplication - No active profile set, falling back to 1 default profile: "default"
+2025-11-15 00:53:58  INFO [main] org.springframework.data.repository.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-11-15 00:53:58  INFO [main] org.springframework.data.repository.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 126 ms. Found 4 JPA repository interfaces.
+2025-11-15 00:53:59  INFO [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port 8081 (http)
+2025-11-15 00:53:59  INFO [main] org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2025-11-15 00:53:59  INFO [main] org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.48]
+2025-11-15 00:53:59  INFO [main] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-11-15 00:53:59  INFO [main] org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 3660 ms
+2025-11-15 00:53:59  INFO [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-11-15 00:54:00  INFO [main] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@4270b142
+2025-11-15 00:54:00  INFO [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-11-15 00:54:00  INFO [main] org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-11-15 00:54:00  INFO [main] org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.33.Final
+2025-11-15 00:54:00  INFO [main] org.hibernate.cache.internal.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-11-15 00:54:01  INFO [main] org.springframework.orm.jpa.persistenceunit.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-11-15 00:54:01  WARN [main] org.hibernate.orm.deprecation - HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-11-15 00:54:01  WARN [main] org.hibernate.orm.deprecation - HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2025-11-15 00:54:01  INFO [main] org.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 8.0
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-11-15 00:54:03  INFO [main] org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-11-15 00:54:03  INFO [main] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-11-15 00:54:05  WARN [main] org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-11-15 00:54:05  INFO [main] org.springframework.validation.beanvalidation.OptionalValidatorFactoryBean - Failed to set up a Bean Validation provider: jakarta.validation.NoProviderFoundException: Unable to create a Configuration, because no Jakarta Bean Validation provider could be found. Add a provider like Hibernate Validator (RI) to your classpath.
+2025-11-15 00:54:06  INFO [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port 8081 (http) with context path '/'
+2025-11-15 00:54:06  INFO [main] uptc.co.tienda.TiendaApplication - Started TiendaApplication in 11.297 seconds (process running for 11.868)
+2025-11-15 00:54:40  INFO [http-nio-8081-exec-1] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-11-15 00:54:40  INFO [http-nio-8081-exec-1] org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-11-15 00:54:40  INFO [http-nio-8081-exec-1] org.springframework.web.servlet.DispatcherServlet - Completed initialization in 5 ms
+2025-11-15 00:54:40  WARN [http-nio-8081-exec-1] org.springframework.web.servlet.mvc.support.DefaultHandlerExceptionResolver - Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'POST' is not supported]

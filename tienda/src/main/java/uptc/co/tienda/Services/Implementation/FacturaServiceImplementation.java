@@ -2,16 +2,15 @@ package uptc.co.tienda.Services.Implementation;
 
 import java.util.List;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import uptc.co.tienda.Entities.FacturaEntity;
-import uptc.co.tienda.Entities.UsuarioEntity;
 import uptc.co.tienda.Mangement.FacturaMangement;
 import uptc.co.tienda.Services.FacturaService;
+import uptc.co.tienda.Services.PdfFacturaService;
 
 @Service
 @Transactional
@@ -22,64 +21,66 @@ public class FacturaServiceImplementation implements FacturaService {
 	@Qualifier("CrudFactura")
 	private FacturaMangement fm;
 
-    @Override
-    public List<FacturaEntity> getListFacturas() {
-        System.out.println("LISTADO");
-        List<FacturaEntity> facturas = (List<FacturaEntity>) fm.findAll();
+    @Autowired
+    @Qualifier("generarPDFAfilicacionService")
+    private PdfFacturaService pdfFacturaService;
 
-        return facturas;
+
+    
+ 
+   //listar facturas para ADMIN
+    @Override
+    public List<FacturaEntity> comprasRealizadas() {
+        // TODO Auto-generated method stub
+        List<FacturaEntity> facturas = (List<FacturaEntity>) fm.findByTotalIsNotNull();
+        for(FacturaEntity facturasE: facturas){
+                 pdfFacturaService.generarPDF(facturasE);
+        }
+         return facturas;
+    }
+
+    // Buscador admin
+    @Override
+    public List<FacturaEntity> fechaTransaccion(String fechaTransaccion) {
+        return fm.findByFechaTransaccionAndTotalIsNotNull(fechaTransaccion);
+    }
+
+// -------------------------------Cliente
+
+    //---- Facturas por usuario para crear una nueva factura o no
+    @Override
+    public FacturaEntity usuarioOrderByCodigoFacturaDesc(String correo) {
+        return  fm.findFirstByUsuarioCorreoOrderByCodigoFacturaDesc(correo);
     }
 
     @Override
     public FacturaEntity saveFactura(FacturaEntity facturaEntity) {
-        FacturaEntity factura= fm.save(facturaEntity);
-        // pdfAfiliacionService.generarAfiliacionPDF(estudiante);
-     
+        FacturaEntity factura= fm.save(facturaEntity);     
          return factura;   
-     }
+    } 
 
+    //Busqueda para terminar proceso de pago
     @Override
-    public FacturaEntity updateFactura(FacturaEntity facturaEntity) {
-                return fm.save(facturaEntity);
-
-    }
-
-    @Override
-    public FacturaEntity getFacturaCodigoFactura(int codigoFactura) {
-
-        FacturaEntity factura=fm.findById(codigoFactura).orElseThrow(()->new IllegalArgumentException("El estudiante no existe"));
+    public FacturaEntity getFacturaCodigoReferencia(String codigoReferencia) {
+        FacturaEntity factura=fm.findByCodigoReferencia(codigoReferencia);
         return factura;
     }
 
     @Override
-    public FacturaEntity getFacturaCodigoReferencia(String codigoReferencia) {
-        return fm.findByCodigoReferencia(codigoReferencia);
+    public FacturaEntity updateFactura(FacturaEntity facturaEntity) {
+        pdfFacturaService.generarPDF(facturaEntity);
+           return fm.save(facturaEntity);
     }
 
     @Override
-    public List<FacturaEntity> facturaUsuario_Correo(String correo) {
-            return fm.findByUsuario_Correo(correo);
-   
+    public List<FacturaEntity> facturasUsuario(String correo) {
+        return fm.findByUsuarioCorreoContainingAndCodigoReferenciaIsNotNullOrderByCodigoFacturaDesc(correo);
     }
 
-    @Override
-    public List<FacturaEntity> fechaTransaccion(String fechaTransaccion) {
-        return fm.findByFechaTransaccion(fechaTransaccion);
-
-    }
-
-    @Override
-    public FacturaEntity usuarioOrderByCodigoFacturaDesc(String correo) {
-        // TODO Auto-generated method stub
-        return  fm.findFirstByUsuarioCorreoOrderByCodigoFacturaDesc(correo);
-    }
 
     
     
 
-   
+ }
 
-      
-
-
-}
+    

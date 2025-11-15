@@ -11,7 +11,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.core.io.FileSystemResource;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,9 +26,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 import uptc.co.tienda.DTO.FacturaDTO;
-import uptc.co.tienda.DTO.VentaDTO;
 import uptc.co.tienda.Entities.FacturaEntity;
 import uptc.co.tienda.Services.Implementation.FacturaServiceImplementation;
+
+import org.springframework.http.HttpHeaders;
+import java.io.File;
 
 
 
@@ -48,25 +53,24 @@ public class FacturaController {
 
 
 
-
+ // ----listar facturas para el ADMIN
     @GetMapping(path="/listar/",produces= MediaType.APPLICATION_JSON_VALUE)
 	public FacturaDTO listar(){
 		logger.info("El usuario ingreso al sistema");
-		return new FacturaDTO( fsi.getListFacturas());
+		return new FacturaDTO( fsi.comprasRealizadas());
 	}
-    //Listar facturas por usuario
-    @GetMapping("/usuarioFacturas/{correo}")
-    public List<FacturaEntity> obtenerFacturasPorUsuario(@PathVariable String correo) {
-        return fsi.facturaUsuario_Correo(correo);
-    }
+ 
+    
 
+    //Busqueda Admin
     @GetMapping("/fecha/{fecha}")
     public List<FacturaEntity> obtenerFacturasPorFecha(@PathVariable String fecha) {
         return fsi.fechaTransaccion(fecha);
     }
 
+ //----
 	
-
+         // ---Pago  
 	@PostMapping("/payment")
     public Map<String, String> createPayment(@RequestBody FacturaEntity request) {
         Map<String, String> data = new HashMap<>();
@@ -99,6 +103,7 @@ public class FacturaController {
         return data;
     }
 
+    //---Realizo la factura
 	@PostMapping("/confirmation")
     public FacturaDTO confirmation(@RequestParam Map<String, String> params) {
         System.out.println("Confirmación recibida: " + params);
@@ -115,24 +120,38 @@ public class FacturaController {
             return new FacturaDTO(fsi.updateFactura(facturaEntity));
     }
 
-    @GetMapping("/response")
+    //----pagina 
+     @GetMapping("/response")
     public String response(@RequestParam Map<String, String> params) {
         // Muestra el resultado al usuario
         return "Resultado de la transacción: " + params.get("transactionState");
     }
 
-    @GetMapping("/verVenta")
-    public VentaDTO verCarrito(@RequestParam String correo) {
+
+    //--Compras realizadas por usuario------------//
+
+    @GetMapping("/usuarioFacturas/{correo}")
+    public List<FacturaEntity> usuarioCarrito(@PathVariable String correo) {
+        return fsi.facturasUsuario(correo);
+    }
+
+    @GetMapping("/descargar/{id}")
+	    public ResponseEntity<FileSystemResource> descargarPdf(@PathVariable int id) {
+	        String fileName = "Factura_" + id + ".pdf";
+	        File file = new File(fileName);
+
+	        if (!file.exists()) {
+	            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+	        }
+
+	        FileSystemResource resource = new FileSystemResource(file);
+	        HttpHeaders headers = new HttpHeaders();
+	        headers.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=" + fileName);
+
+	        return ResponseEntity.ok()
+	                .headers(headers)
+	                .body(resource);
+	    }
 
 
-		FacturaEntity fact=fsi.usuarioOrderByCodigoFacturaDesc(correo);
-
-		if(fact.getCodigoReferencia()!=null){
-			return new VentaDTO(fact.getListaVentaEntity());
-
-		}
-     
-
-	  return new VentaDTO("00");
-	}
 }

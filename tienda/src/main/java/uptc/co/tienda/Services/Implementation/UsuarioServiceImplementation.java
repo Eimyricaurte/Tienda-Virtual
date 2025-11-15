@@ -39,7 +39,7 @@ public class UsuarioServiceImplementation implements UsuarioService {
 
     @Override
     public UsuarioEntity getUsuarioId(String correo){
-        UsuarioEntity estudiante=um.findById(correo).orElseThrow(()->new IllegalArgumentException("El estudiante no existe"));
+        UsuarioEntity estudiante=um.findById(correo).orElseThrow(()->new IllegalArgumentException("El usuario no existe"));
         return estudiante;
     }
     

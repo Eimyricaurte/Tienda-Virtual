@@ -1,0 +1,116 @@
+-------------------------------Usuario
+
+  ***********       listarCatalogo (GET)
+
+http://localhost:8081/producto/listarCatalogoUsuario/
+ Respuesta
+
+{
+    "lista": [
+        {
+            "codigo": 1,
+            "nombre": "Mouse Logitech",
+            "descripcion": "Mouse inalámbrico ergonómico",
+            "imagen": "mouse_logitech.jpg",
+            "precio": 90000.0,
+            "cantidad": 25
+        }
+    ]
+}
+****** Buscar producto por una palabra o una parte de la descripcion
+                      se envia el nombre o parte de la descripcion por url
+http://localhost:8081/producto/buscarProductoNombre/full
+
+
+*******  Registrar producto en el carrito (Post)
+
+http://localhost:8081/venta/saveProductoCompra/
+ 
+           json de enviar
+{
+    "facturaEntity":{
+        "usuario":{
+            "correo":"laura.martinez@hotmail.com"
+        }
+    },
+    "producto":{
+        "codigo":2
+    },
+    "cantidad": 10,
+    "precioTotal": 230
+
+}
+    respuesta
+{
+    "mensaje": "Producto eliminado del carro"
+}
+*********** Listar carro (GET)
+                            Se envia el correo  por  url
+http://localhost:8081/venta/carro/juanperez@gmail.com
+         
+           Respuesta
+{
+    "lista": [
+        {
+            "id": 9,
+            "facturaEntity": {
+                "codigoFactura": 7,
+                "codigoReferencia": null,
+                "usuario": {
+                    "correo": "laura.martinez@hotmail.com",
+                    "numeroDocumento": "1003",
+                    "nombre": "Laura Martínez",
+                    "clave": null,
+                    "telefono": "3019876543"
+                },
+                "estadoTransaccion": null,
+                "estado": null,
+                "total": 0.0,
+                "transaccionId": null,
+                "ordenIdPay": null,
+                "codigoAutorizacionBanco": null,
+                "fechaTransaccion": null
+            },
+            "producto": {
+                "codigo": 2,
+                "nombre": "Monitor Samsung",
+                "descripcion": "Monitor 24 pulgadas Full HD",
+                "imagen": "monitor_samsung.jpg",
+                "precio": 600000.0,
+                "cantidad": -97
+            },
+            "cantidad": 100,
+            "precioTotal": 2300000.0
+        }
+    ]
+}
+
+
+
+******** Editar la cantidad de compra de un producto (PUT)
+
+http://localhost:8081/venta/editarProductoUsuario/
+
+             json de enviar
+{
+    "id":9,
+    "cantidad":100,
+    "precioTotal": 2300000
+}
+     retorna un mensaje
+{
+    "mensaje": "Producto editado correctamente"
+}
+
+*********** Eliminar un producto del carro (DELETE)
+                             Se envia el id de la venta por la url
+http://localhost:8081/venta/eliminarVenta/1
+
+
+***** Ver compras realizdas por usuario (GET)
+                                       Se envia el correo  por  url
+http://localhost:8081/factura/usuarioFacturas/juanperez@gmail.com
+
+***** Descargar facturas de las compras realizadas (GET)
+                              Se envia el codigo de la factura por la url
+http://localhost:8081/factura/descargar/6
