@@ -11,11 +11,14 @@ import uptc.co.tienda.Entities.ProductoEntity;
 public interface ProductoManagement extends CrudRepository<ProductoEntity, Integer> {
 
     List<ProductoEntity> findByCantidad(int cantidad);
+    List<ProductoEntity> findByNombreContainingIgnoreCaseOrDescripcionContainingIgnoreCase(String nombre, String descripcion);
+
 
 
     //----usuario catalogo
          List<ProductoEntity> findByCantidadNot(int cantidad);
-         List<ProductoEntity> findByNombreContainingIgnoreCaseOrDescripcionContainingIgnoreCase(String nombre, String descripcion);
+         List<ProductoEntity> findByCantidadIsNotAndNombreContainingIgnoreCaseOrCantidadIsNotAndDescripcionContainingIgnoreCase(
+        int cantidad1, String nombre,int cantidad2, String descripcion);
 
 
 

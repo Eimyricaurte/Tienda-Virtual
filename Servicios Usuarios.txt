@@ -17,7 +17,7 @@ http://localhost:8081/producto/listarCatalogoUsuario/
         }
     ]
 }
-****** Buscar producto por una palabra o una parte de la descripcion
+****** Buscar producto por una palabra o una parte de la descripcion donde la cantidad!=0
                       se envia el nombre o parte de la descripcion por url
 http://localhost:8081/producto/buscarProductoNombre/full
 
@@ -93,7 +93,7 @@ http://localhost:8081/venta/editarProductoUsuario/
 
              json de enviar
 {
-    "id":9,
+    "id":9, (ID DE LA VENTA)
     "cantidad":100,
     "precioTotal": 2300000
 }
@@ -107,7 +107,7 @@ http://localhost:8081/venta/editarProductoUsuario/
 http://localhost:8081/venta/eliminarVenta/1
 
 
-***** Ver compras realizdas por usuario (GET)
+***** Ver facturas realizadas por usuario (GET)
                                        Se envia el correo  por  url
 http://localhost:8081/factura/usuarioFacturas/juanperez@gmail.com
 

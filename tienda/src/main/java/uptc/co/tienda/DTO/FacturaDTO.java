@@ -9,7 +9,7 @@ import uptc.co.tienda.Entities.FacturaEntity;
 @JsonInclude(JsonInclude.Include.NON_DEFAULT)
 public class FacturaDTO {
 
-        private String mensaje;
+    private String mensaje;
     private List<FacturaEntity> lista;
     private FacturaEntity facturaEntity;
 

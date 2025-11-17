@@ -19,7 +19,6 @@ public class VentaEntity {
      @GeneratedValue(strategy = GenerationType.IDENTITY)
      @Column(name="Id" )
      private int id;
-
  
     @ManyToOne
     @JoinColumn (name="CodigoFactura")

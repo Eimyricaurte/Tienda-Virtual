@@ -34,25 +34,24 @@ public class UsuarioController {
 
 	@PostMapping(path="/login/")
 	public UsuarioDTO login(@RequestBody LoginDTO loginDTO){
-		logger.info("El usuario ingreso al sistema");
 		return new UsuarioDTO(usi.login(loginDTO.getCorreo(), loginDTO.getClave()));
 	}
     
 	@GetMapping(path="/listar/",produces= MediaType.APPLICATION_JSON_VALUE)
 	public UsuarioDTO listar(){
-		logger.info("El usuario ingreso al sistema");
+		logger.info("El administrador ingreso al sistema ---Listar usarios");
 		return new UsuarioDTO(usi.getListUsuario());
 	}
 
 	@PostMapping("/save/")
     public UsuarioDTO save(@RequestBody UsuarioEntity usuarioEntity){
-		logger.info("El usuario ingreso al sistema--Registrar ---");
+		logger.info("El usuario ingreso al sistema--Registrar usuarios ---");
         return new UsuarioDTO(usi.saveUsuario(usuarioEntity));
     }
 
 	@PutMapping("/update/")
     public UsuarioDTO update(@RequestBody UsuarioEntity usuarioEntity){
-        logger.info("El usuario ingreso al sistema--Editar ---");
+        logger.info("El administrador ingreso al sistema--Editar usuario---");
 		try{
            UsuarioEntity existtingUsuario=usi.getUsuarioId(usuarioEntity.getCorreo());
 			existtingUsuario.setNumeroDocumento(usuarioEntity.getNumeroDocumento());
@@ -65,25 +64,25 @@ public class UsuarioController {
 		}  
     }
 	
-	@DeleteMapping("/delete/{id}")
+	@DeleteMapping("/delete/{correo}")
 	public UsuarioDTO delete(@PathVariable String correo){
-		logger.info("El usuario ingreso al sistema--Eliminar ---");
+		logger.info("El administrador ingreso al sistema--Eliminar usuario---");
 		try{
-		UsuarioEntity existtingEstudiante=usi.getUsuarioId(correo);
 		usi.deleteUsuario(correo);
-		return new UsuarioDTO(existtingEstudiante);
+		return new UsuarioDTO("El usuario con correo "+correo+" se elimino correctamente");
 	    }catch(Exception e){
-			 return new UsuarioDTO(e.getMessage());
+			 return new UsuarioDTO("El usuario no se puede eliminar");
 		}
 	}
 
-	@GetMapping(path = "/usuario/{correo}")
+	@GetMapping(path = "/buscarUsuario/{correo}")
 	public UsuarioDTO getUsuarioPorCorreo(@PathVariable String correo) {
+		logger.info("El administrador ingreso al sistema--Buscar usuario---");
 		try {
 			UsuarioEntity usuario = usi.getUsuarioId(correo);
 			return new UsuarioDTO(usuario); // Devuelve el usuario encontrado
 		} catch (IllegalArgumentException e) {
-			return new UsuarioDTO(e.getMessage()); // Mensaje: "El estudiante no existe"
+			return new UsuarioDTO("El usuario con correo "+correo+" no esta registrado"); // Mensaje: "El estudiante no existe"
 		} 
 	}
 

@@ -10,8 +10,9 @@ import uptc.co.tienda.Entities.FacturaEntity;
 @Repository("CrudFactura")
 public interface FacturaMangement extends CrudRepository<FacturaEntity, Integer> {
 
-        List<FacturaEntity> findByTotalIsNotNull();
-        List<FacturaEntity> findByFechaTransaccionAndTotalIsNotNull(String fechaTransaccion);
+        List<FacturaEntity> findByTotalIsNot(double total);
+        List<FacturaEntity> findByFechaTransaccionBetweenAndTotalNot(String fechaInicio, String fechaFin, double total);
+        List<FacturaEntity> findByEstadoAndTotalNot(String estado, double total);
 
 
         FacturaEntity findFirstByUsuarioCorreoOrderByCodigoFacturaDesc(String correo);

@@ -4,6 +4,9 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.cache.annotation.Cacheable;
+import org.springframework.cache.annotation.CacheEvict;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -30,30 +33,46 @@ public class FacturaServiceImplementation implements FacturaService {
  
    //listar facturas para ADMIN
     @Override
+    @Cacheable("ListarFacturasConPago")
     public List<FacturaEntity> comprasRealizadas() {
-        // TODO Auto-generated method stub
-        List<FacturaEntity> facturas = (List<FacturaEntity>) fm.findByTotalIsNotNull();
-        for(FacturaEntity facturasE: facturas){
-                 pdfFacturaService.generarPDF(facturasE);
-        }
+        List<FacturaEntity> facturas = (List<FacturaEntity>) fm.findByTotalIsNot(0);
          return facturas;
     }
 
     // Buscador admin
     @Override
-    public List<FacturaEntity> fechaTransaccion(String fechaTransaccion) {
-        return fm.findByFechaTransaccionAndTotalIsNotNull(fechaTransaccion);
+    @Cacheable("ListarFacturasPorRangoFechas")
+    public List<FacturaEntity> obtenerFacturasPorRangoFechas(String fechaInicio, String fechaFin) {
+        String fechaInicioCompleta = fechaInicio + " 00:00:00";
+        String fechaFinCompleta = fechaFin + " 23:59:59";
+        
+        return fm.findByFechaTransaccionBetweenAndTotalNot(fechaInicioCompleta, fechaFinCompleta, 0);   
+    }
+
+    @Override
+    @Cacheable("ListarFacturasEstado")
+    public List<FacturaEntity> findByEstado(String estado) {
+        return fm.findByEstadoAndTotalNot(estado, 0);
     }
 
 // -------------------------------Cliente
 
     //---- Facturas por usuario para crear una nueva factura o no
     @Override
+    @Cacheable("ListarFacturasUsuario")
     public FacturaEntity usuarioOrderByCodigoFacturaDesc(String correo) {
         return  fm.findFirstByUsuarioCorreoOrderByCodigoFacturaDesc(correo);
     }
 
     @Override
+    @CacheEvict(value = { 
+    "ListarFacturasConPago", 
+    "ListarFacturasPorRangoFechas",
+    "ListarFacturasEstado",
+    "ListarFacturasUsuario",
+    "busquedaFactura",
+    "ListarFacturaUsuarioPago"
+    }, allEntries = true)
     public FacturaEntity saveFactura(FacturaEntity facturaEntity) {
         FacturaEntity factura= fm.save(facturaEntity);     
          return factura;   
@@ -61,25 +80,31 @@ public class FacturaServiceImplementation implements FacturaService {
 
     //Busqueda para terminar proceso de pago
     @Override
+    @Cacheable("busquedaFactura")
     public FacturaEntity getFacturaCodigoReferencia(String codigoReferencia) {
         FacturaEntity factura=fm.findByCodigoReferencia(codigoReferencia);
         return factura;
     }
 
     @Override
+    @CacheEvict(value = { 
+    "ListarFacturasConPago", 
+    "ListarFacturasPorRangoFechas",
+    "ListarFacturasEstado",
+    "ListarFacturasUsuario",
+    "busquedaFactura",
+    "ListarFacturaUsuarioPago"
+    }, allEntries = true)
     public FacturaEntity updateFactura(FacturaEntity facturaEntity) {
         pdfFacturaService.generarPDF(facturaEntity);
-           return fm.save(facturaEntity);
+        return fm.save(facturaEntity);
     }
 
     @Override
+    @Cacheable("ListarFacturaUsuarioPago")
     public List<FacturaEntity> facturasUsuario(String correo) {
         return fm.findByUsuarioCorreoContainingAndCodigoReferenciaIsNotNullOrderByCodigoFacturaDesc(correo);
     }
-
-
-    
-    
 
  }
 

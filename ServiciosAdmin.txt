@@ -1,0 +1,260 @@
+---------Servicios ADMIN
+ ^^^^^^^^^^^^Gestion Usuarios
+    ********      listar (GET)
+   http://localhost:8081/usuario/listar/
+  Respuesta
+{
+    "lista": [
+        {
+            "correo": "angela@gmail.com",
+            "numeroDocumento": "123",
+            "nombre": "angela",
+            "clave": "123",
+            "telefono": "233456"
+        }
+             ]
+}
+
+  **********     editar (PUT)
+http://localhost:8081/usuario/update/
+
+ json de enviar
+{
+    "correo": "angela@gmail.com",
+    "numeroDocumento": "123",
+    "nombre": "angela",
+    "clave": "12345",
+    "telefono": "987654321"
+}
+
+ Respuesta
+
+{
+    "estudianteEntity": {
+        "correo": "angela@gmail.com",
+        "numeroDocumento": "123",
+        "nombre": "angela",
+        "clave": "12345",
+        "telefono": "987654321"
+    }
+}
+   *******    eliminar (DELETE)
+                              Se envia correo por url
+http://localhost:8081/usuario/delete/angela@gmail.com
+
+Respuesta
+{
+    "mensaje": "El usuario con correo angela@gmail.com se elimino correctamente"
+}
+
+   *****  buscar usuario por correo (GET)
+                                        Se envia correo por url
+http://localhost:8081/usuario/buscarUsuario/angela@gmail.com
+     Respuesta 
+ si esta registrado
+{
+    "estudianteEntity": {
+        "correo": "juanperez@gmail.com",
+        "numeroDocumento": "1002",
+        "nombre": "Juan Pérez",
+        "clave": null,
+        "telefono": "3104567890"
+    }
+}
+
+                      si no esta registrado
+{
+    "mensaje": "El usuario con correo angela@gmail.com no esta registrado"
+}
+^^^^^^^^^^^^^^Gestion Productos
+
+******* Registrar 
+http://localhost:8081/producto/save/
+ Json de enviar
+{
+    "nombre":"aaa",
+    "descripcion":"qqq",
+    "imagen":"a.png",
+    "precio":800,
+    "cantidad":50
+}
+******* LISTAR
+
+http://localhost:8081/producto/listar/
+ Respuesta
+{
+    "lista": [
+        {
+            "codigo": 1,
+            "nombre": "aaa",
+            "descripcion": "qqq",
+            "imagen": "a.png",
+            "precio": 800.0,
+            "cantidad": 500
+        }
+   ]
+}
+
+ ****** buscar por Cantidad (GET)
+                                           Se envia cantidad por url 
+http://localhost:8081/producto/buscarProductoCantidad/25
+  
+   Respuesta
+{
+    "lista": [
+        {
+            "codigo": 1,
+            "nombre": "Mouse Logitech",
+            "descripcion": "Mouse inalámbrico ergonómico",
+            "imagen": "mouse_logitech.jpg",
+            "precio": 90000.0,
+            "cantidad": 25
+        }
+    ]
+}
+
+****** Buscar por una palabra o una parte de la descripcion 
+                      se envia el nombre o parte de la descripcion por url
+http://localhost:8081/producto/buscarProductoNombreA/
+
+{
+    "lista": [
+        {
+            "codigo": 1,
+            "nombre": "aaa",
+            "descripcion": "qqq",
+            "imagen": "a.png",
+            "precio": 800.0,
+            "cantidad": 500
+        }
+    ]
+}
+
+****** Editar  (PUT)
+
+Json de enviar
+{
+    "codigo":1,
+    "nombre":"aaa",
+    "descripcion":"qqq",
+    "imagen":"a.png",
+    "precio":800,
+    "cantidad":50
+}
+ Respuesta
+{
+    "productoEntity": {
+        "codigo": 1,
+        "nombre": "aaa",
+        "descripcion": "qqq",
+        "imagen": "a.png",
+        "precio": 800.0,
+        "cantidad": 500
+    }
+}
+
+********  Eliminar (DELETE) 
+                              Se envia codigo por url
+ http://localhost:8081/producto/delete/5
+ Respuesta
+
+{
+    "mensaje": "El producto con codigo 5 se elimino correctamente"
+}
+^^^^^^^^ Venta
+
+**********--- Ventas que aun no se han confirmado porque no han realizado pago "Las puede eliminar"
+  (GET)    
+      http://localhost:8081/venta/listarVentasSinPago/
+
+Respuesta
+{
+    "lista": [
+        {
+            "id": 2,
+            "facturaEntity": {
+                "codigoFactura": 4,
+                "codigoReferencia": null,
+                "usuario": {
+                    "correo": "juanperez@gmail.com",
+                    "numeroDocumento": "1002",
+                    "nombre": "Juan Pérez",
+                    "clave": null,
+                    "telefono": "3104567890"
+                },
+                "estadoTransaccion": null,
+                "estado": null,
+                "total": 0.0,
+                "transaccionId": null,
+                "ordenIdPay": null,
+                "codigoAutorizacionBanco": null,
+                "fechaTransaccion": null
+            },
+            "producto": {
+                "codigo": 1,
+                "nombre": "aaa",
+                "descripcion": "qqq",
+                "imagen": "a.png",
+                "precio": 800.0,
+                "cantidad": 500
+            },
+            "cantidad": 3,
+            "precioTotal": 15000.0
+        }
+    ]
+}
+
+***** busqueda por producto (GET)
+                              
+                Se envia el nombre del producto exacto por url
+http://localhost:8081/venta/ventasSinPagoProducto/aaa
+
+***** busqueda por usuario (GET)
+                             Se envia el correo por url
+http://localhost:8081/venta/ventasSinPagoUsuario/laura.martinez@hotmail.com
+***** Eliminar (DELETE)
+              Se envia el id de la venta por la url
+http://localhost:8081/venta/eliminarVenta/1  
+ Respuesta
+{
+  "mensaje":"Producto eliminado del carro"
+}
+*****------ Ventas ya confirmadas 
+***** Listar (GET)
+http://localhost:8081/venta/listarVentasPago/
+
+***** busqueda por producto (GET)
+                            Se envia el nombre del producto exacto por url
+http://localhost:8081/venta/ventasPagoProducto/Monitor Samsung
+
+***** busqueda por usuario (GET)
+                                  Se envia el correo por url
+http://localhost:8081/venta/ventasPagoUsuario/juanperez@gmail.com
+
+
+
+^^^^^^^^^^^^ Facturas
+***** Listar todas las facturas  (GET)
+http://localhost:8081/factura/listar/
+
+***** busqueda por usuario (GET)
+                         Se envia el correo  por  url
+http://localhost:8081/factura/usuarioFacturas/juanperez@gmail.com
+
+***** Buscar en un rango de fecha  (GET)
+ 
+http://localhost:8081/factura/fecha/
+   Json de enviar
+{
+    "fechaInicio":"2025-11-10",
+    "fechaFin":"2025-11-15 00:47:10"
+}
+
+***** Buscar por estado de la transaccion (4=aprobado, 6=rechazado, 7=pendiente)
+   (GET)           Se envia un string con el numero del estado por  url
+http://localhost:8081/factura/estado/4
+ 
+
+***** Descargar factura (GET)
+             Se envia el codigo de la factura por la url
+http://localhost:8081/factura/descargar/6

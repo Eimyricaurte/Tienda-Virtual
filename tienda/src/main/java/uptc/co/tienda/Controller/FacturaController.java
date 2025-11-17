@@ -1,7 +1,6 @@
 package uptc.co.tienda.Controller;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.UUID;
@@ -26,6 +25,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 import uptc.co.tienda.DTO.FacturaDTO;
+import uptc.co.tienda.DTO.FechaDTO;
 import uptc.co.tienda.Entities.FacturaEntity;
 import uptc.co.tienda.Services.Implementation.FacturaServiceImplementation;
 
@@ -56,23 +56,32 @@ public class FacturaController {
  // ----listar facturas para el ADMIN
     @GetMapping(path="/listar/",produces= MediaType.APPLICATION_JSON_VALUE)
 	public FacturaDTO listar(){
-		logger.info("El usuario ingreso al sistema");
+        logger.info("Solicitud para listar todas las facturas.");
 		return new FacturaDTO( fsi.comprasRealizadas());
 	}
  
     
-
     //Busqueda Admin
-    @GetMapping("/fecha/{fecha}")
-    public List<FacturaEntity> obtenerFacturasPorFecha(@PathVariable String fecha) {
-        return fsi.fechaTransaccion(fecha);
+    @GetMapping("/fecha/")
+    public FacturaDTO obtenerFacturasPorFecha(@RequestBody FechaDTO fechaDTO) {
+        logger.info("Solicitud para consultar facturas por rango de fechas.");
+        return new FacturaDTO(fsi.obtenerFacturasPorRangoFechas(fechaDTO.getFechaInicio(), fechaDTO.getFechaFin()));
     }
 
+     //Busqueda Admin  Estado de la transacción (4=aprobado, 6=rechazado, 7=pendiente)
+    @GetMapping("/estado/{estado}")
+    public FacturaDTO obtenerFacturasPorFecha(@PathVariable String estado) {
+           logger.info("Solicitud para consultar facturas por estado de transacción.");
+        return new FacturaDTO(fsi.findByEstado(estado));
+    }
  //----
 	
          // ---Pago  
 	@PostMapping("/payment")
     public Map<String, String> createPayment(@RequestBody FacturaEntity request) {
+       
+        logger.info("Solicitud para iniciar proceso de pago.");
+
         Map<String, String> data = new HashMap<>();
 
         String referenceCode = UUID.randomUUID().toString();
@@ -106,7 +115,9 @@ public class FacturaController {
     //---Realizo la factura
 	@PostMapping("/confirmation")
     public FacturaDTO confirmation(@RequestParam Map<String, String> params) {
-        System.out.println("Confirmación recibida: " + params);
+         
+        logger.info("Confirmación de pago recibida desde el proveedor y actaulizacion en la db.");
+       
         // Aquí validas la firma recibida y actualizas tu base de datos
         FacturaEntity facturaEntity=fsi.getFacturaCodigoReferencia(params.get("reference_sale"));
             facturaEntity.setEstado(params.get("state_pol")); // Estado de la transacción (4=aprobado, 6=rechazado, 7=pendiente)
@@ -123,7 +134,7 @@ public class FacturaController {
     //----pagina 
      @GetMapping("/response")
     public String response(@RequestParam Map<String, String> params) {
-        // Muestra el resultado al usuario
+        logger.info("Solicitud para mostrar el resultado de la transacción al usuario.");
         return "Resultado de la transacción: " + params.get("transactionState");
     }
 
@@ -131,13 +142,17 @@ public class FacturaController {
     //--Compras realizadas por usuario------------//
 
     @GetMapping("/usuarioFacturas/{correo}")
-    public List<FacturaEntity> usuarioCarrito(@PathVariable String correo) {
-        return fsi.facturasUsuario(correo);
+    public FacturaDTO usuarioFacturas(@PathVariable String correo) {
+        logger.info("Solicitud para listar facturas de un usuario.");
+        return new FacturaDTO(fsi.facturasUsuario(correo));
     }
 
     @GetMapping("/descargar/{id}")
 	    public ResponseEntity<FileSystemResource> descargarPdf(@PathVariable int id) {
-	        String fileName = "Factura_" + id + ".pdf";
+	           logger.info("Solicitud para descargar archivo PDF de factura.");
+
+
+            String fileName = "Factura_" + id + ".pdf";
 	        File file = new File(fileName);
 
 	        if (!file.exists()) {

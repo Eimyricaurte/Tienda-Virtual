@@ -42,19 +42,53 @@ public class VentaController {
 	@Qualifier("productoServiceImplementation")
 	private ProductoServiceImplementation psi;
 
-        private static final Logger logger = LoggerFactory.getLogger(VentaController.class);
+    private static final Logger logger = LoggerFactory.getLogger(VentaController.class);
 
 
-    @GetMapping(path="/listar/",produces= MediaType.APPLICATION_JSON_VALUE)
+   
+    @GetMapping(path="/listarVentasSinPago/",produces= MediaType.APPLICATION_JSON_VALUE)
 	public VentaDTO listar(){
-		logger.info("El usuario ingreso al sistema");
-		return new VentaDTO( vsi.getListVentas());
+        logger.info("Solicitud para listar ventas sin pago.");
+		return new VentaDTO( vsi.ventasSinPago());
 	}
+
+
+    @GetMapping(path="/ventasSinPagoProducto/{nombre}",produces= MediaType.APPLICATION_JSON_VALUE)
+	public VentaDTO ventasSinPagoProducto(@PathVariable String nombre){
+		logger.info("Solicitud para obtener ventas sin pago filtradas por producto.");
+		return new VentaDTO(vsi.ventasSinPagoProducto(nombre));
+	}
+
+    @GetMapping(path="/ventasSinPagoUsuario/{correo}",produces= MediaType.APPLICATION_JSON_VALUE)
+	public VentaDTO ventasSinPagoUsuario(@PathVariable String correo){
+		logger.info("Solicitud para obtener ventas sin pago filtradas por usuario.");
+		return new VentaDTO(vsi.ventasSinPagoUsuario(correo));
+	}
+
+	@GetMapping(path="/listarVentasPago/",produces= MediaType.APPLICATION_JSON_VALUE)
+	public VentaDTO listarVentasPago(){
+        logger.info("Solicitud para listar ventas pagadas.");
+		return new VentaDTO( vsi.ventasPago());
+	}
+
+    @GetMapping(path="/ventasPagoProducto/{nombre}",produces= MediaType.APPLICATION_JSON_VALUE)
+	public VentaDTO ventasPagoProducto(@PathVariable String nombre){
+		    logger.info("Solicitud para obtener ventas pagadas filtradas por producto.");
+		return new VentaDTO(vsi.ventasPagoProducto(nombre));
+	}
+
+    @GetMapping(path="/ventasPagoUsuario/{correo}",produces= MediaType.APPLICATION_JSON_VALUE)
+	public VentaDTO ventasPagoUsuario(@PathVariable String correo){
+		    logger.info("Solicitud para obtener ventas pagadas filtradas por usuario.");
+		return new VentaDTO(vsi.ventasPagoUsuario(correo));
+	}
+
 
 // Registro producto en el carrito
 	@PostMapping("/saveProductoCompra/")
     public VentaDTO saveProductoCompra(@RequestBody VentaEntity ventaEntity){
-		logger.info("El usuario ingreso al sistema--Registrar ---");
+       
+		logger.info("Solicitud para registrar un producto en el carrito.");
 		FacturaEntity fact=fsi.usuarioOrderByCodigoFacturaDesc(ventaEntity.getFacturaEntity().getUsuario().getCorreo());
        
 		if (fact == null) {
@@ -77,7 +111,8 @@ public class VentaController {
 // ---Ver carro
     @GetMapping(path="/carro/{correo}",produces= MediaType.APPLICATION_JSON_VALUE)
 	public VentaDTO carro(@PathVariable String correo){
-  
+        logger.info("Solicitud para visualizar productos del carrito.");
+
 		FacturaEntity fact=fsi.usuarioOrderByCodigoFacturaDesc(correo);
 		if (fact == null) {
 			System.out.println("null");
@@ -94,7 +129,8 @@ public class VentaController {
 // ---Eliminar producto del carro
     @DeleteMapping(path="/eliminarVenta/{idVenta}",produces= MediaType.APPLICATION_JSON_VALUE)
 	public VentaDTO eliminarVentaPro(@PathVariable int idVenta){
-  
+      logger.info("Solicitud para eliminar un producto del carrito.");
+
 	    VentaEntity venta=vsi.getVentaId(idVenta);
 		ProductoEntity productoExistente=psi.getProductoCodigo(venta.getProducto().getCodigo());
 		 int  cantidad=venta.getProducto().getCantidad()+venta.getCantidad();
@@ -107,7 +143,10 @@ public class VentaController {
 //  -------Editar cantidad de un producto en el carro
     @PutMapping("/editarProductoUsuario/")
     public VentaDTO editarProductoUsuario(@RequestBody VentaEntity ventaEntity) {
-        int  cantidad=0;
+           logger.info("Solicitud para editar la cantidad de un producto en el carrito.");
+
+
+		int  cantidad=0;
 		VentaEntity venta=vsi.getVentaId(ventaEntity.getId());
 		ProductoEntity productoExistente=psi.getProductoCodigo(venta.getProducto().getCodigo());
 		if(ventaEntity.getCantidad()>venta.getCantidad()){
@@ -129,10 +168,5 @@ public class VentaController {
 		
     }
     
-    
-
-
-
-	
 
 }

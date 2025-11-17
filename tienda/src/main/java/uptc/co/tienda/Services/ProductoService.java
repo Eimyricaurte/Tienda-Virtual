@@ -9,8 +9,10 @@ public interface ProductoService {
 
     public abstract List<ProductoEntity> getListProducto();
     public abstract List<ProductoEntity> buscarProductos(int cantidad);
+    public abstract List<ProductoEntity> buscarProductosNombreA(String nombre);
 
-    // buscar productos por nombre o que contenga ese nombre
+
+    // buscar productos para el usuario cantidad diferente 0 por nombre o que contenga ese nombre
     public abstract List<ProductoEntity> buscarProductosNombre(String nombre);
 
 

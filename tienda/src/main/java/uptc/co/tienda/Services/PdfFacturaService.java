@@ -17,9 +17,7 @@ import uptc.co.tienda.Entities.VentaEntity;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.Element;
 import com.itextpdf.text.Font;
-import com.itextpdf.text.Image;
-import com.itextpdf.text.Paragraph;
-import com.itextpdf.text.pdf.PdfWriter;
+
 import java.util.Date;
 
 @Service("generarPDFAfilicacionService")

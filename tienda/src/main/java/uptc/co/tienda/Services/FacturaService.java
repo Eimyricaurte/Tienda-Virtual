@@ -7,7 +7,8 @@ import uptc.co.tienda.Entities.FacturaEntity;
 public interface FacturaService {
 
    public abstract List<FacturaEntity> comprasRealizadas();
-   public abstract List<FacturaEntity> fechaTransaccion(String fechaTransaccion);
+   public abstract List<FacturaEntity> obtenerFacturasPorRangoFechas(String fechaInicio, String fechaFin);
+   public abstract List<FacturaEntity> findByEstado(String estado);
 
 
    public abstract FacturaEntity usuarioOrderByCodigoFacturaDesc(String correo);
