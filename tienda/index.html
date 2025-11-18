@@ -4,8 +4,17 @@
     <title>Pago PayU</title>
 </head>
 <body>
-    <h1>Redirigiendo a PayU...</h1>
-    <form id="payuForm" method="post" action="">
+    <h1>Procesar Pago</h1>
+    <p>Haga clic en el botón para pagar con PayU</p>
+    
+    <button onclick="procesarPago()" style="padding: 10px 20px; font-size: 16px;">
+        Pagar con PayU
+    </button>
+    
+    <div id="mensaje" style="margin-top: 10px;"></div>
+
+    <!-- Formulario oculto para PayU -->
+    <form id="payuForm" method="post" action="" style="display: none;">
         <input type="hidden" name="merchantId">
         <input type="hidden" name="accountId">
         <input type="hidden" name="description">
@@ -21,34 +30,46 @@
     </form>
 
     <script>
-        async function initPayment() { 
+        async function procesarPago() {
+            const btn = event.target;
+            const mensaje = document.getElementById('mensaje');
             
-            const res = await fetch('https://proyecto8081.loca.lt/factura/payment', {
-                method: 'POST',
-                headers: {'Content-Type':'application/json'},
-                body: JSON.stringify({
-                    
-                    codigoFactura:6,
-                    usuario:{
-                        correo: 'juanperez@gmail.com'
-                    } ,
-                    total: 10000
-                    
-                })
-            });
-            const data = await res.json();
-
-            const form = document.getElementById('payuForm');
-            form.action = data.action;
-
-            for (const key in data) {
-                if(form[key]) form[key].value = data[key];
+            btn.disabled = true;
+            btn.textContent = 'Procesando...';
+            mensaje.textContent = '';
+            mensaje.style.color = 'blue';
+            
+            try {
+                const res = await fetch('https://proyecto8081.loca.lt/factura/payment', {
+                    method: 'POST',
+                    headers: {'Content-Type':'application/json'},
+                    body: JSON.stringify({
+                        codigoFactura: 6,
+                        usuario: { correo: 'juanperez@gmail.com' },
+                        total: 10000
+                    })
+                });
+                
+                if (!res.ok) throw new Error('Error en el servidor');
+                
+                const data = await res.json();
+                
+                const form = document.getElementById('payuForm');
+                form.action = data.action;
+                
+                for (const key in data) {
+                    if(form[key]) form[key].value = data[key];
+                }
+                
+                form.submit();
+                
+            } catch (error) {
+                mensaje.textContent = 'Error: ' + error.message;
+                mensaje.style.color = 'red';
+                btn.disabled = false;
+                btn.textContent = 'Pagar con PayU';
             }
-
-            form.submit();
         }
-
-        initPayment();
     </script>
 </body>
 </html>

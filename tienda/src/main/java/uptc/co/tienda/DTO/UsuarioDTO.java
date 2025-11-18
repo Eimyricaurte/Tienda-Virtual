@@ -10,24 +10,30 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 public class UsuarioDTO {
 
     private String mensaje;
+    private String token;
     private List<UsuarioEntity> lista;
-    private UsuarioEntity estudianteEntity;
+    private UsuarioEntity usuarioEntity;
 
 
 
 
     
+    public UsuarioDTO(String mensaje, String token) {
+        this.mensaje = mensaje;
+        this.token = token;
+    }
     public UsuarioDTO(String mensaje) {
         this.mensaje = mensaje;
     }
     public UsuarioDTO(List<UsuarioEntity> lista) {
         this.lista = lista;
     }
-    public UsuarioDTO(UsuarioEntity estudianteEntity) {
-        this.estudianteEntity = estudianteEntity;
-    }
+   
 
     
+    public UsuarioDTO(UsuarioEntity usuarioEntity) {
+        this.usuarioEntity = usuarioEntity;
+    }
     public String getMensaje() {
         return mensaje;
     }
@@ -40,11 +46,18 @@ public class UsuarioDTO {
     public void setLista(List<UsuarioEntity> lista) {
         this.lista = lista;
     }
-    public UsuarioEntity getEstudianteEntity() {
-        return estudianteEntity;
+   
+    public String getToken() {
+        return token;
     }
-    public void setEstudianteEntity(UsuarioEntity estudianteEntity) {
-        this.estudianteEntity = estudianteEntity;
+    public void setToken(String token) {
+        this.token = token;
+    }
+    public UsuarioEntity getUsuarioEntity() {
+        return usuarioEntity;
+    }
+    public void setUsuarioEntity(UsuarioEntity usuarioEntity) {
+        this.usuarioEntity = usuarioEntity;
     }
 
     

@@ -148,25 +148,25 @@ public class FacturaController {
     }
 
     @GetMapping("/descargar/{id}")
-	    public ResponseEntity<FileSystemResource> descargarPdf(@PathVariable int id) {
-	           logger.info("Solicitud para descargar archivo PDF de factura.");
+    public ResponseEntity<FileSystemResource> descargarPdf(@PathVariable int id) {
+            logger.info("Solicitud para descargar archivo PDF de factura.");
 
 
-            String fileName = "Factura_" + id + ".pdf";
-	        File file = new File(fileName);
+        String fileName = "Factura_" + id + ".pdf";
+        File file = new File(fileName);
 
-	        if (!file.exists()) {
-	            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-	        }
+        if (!file.exists()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
 
-	        FileSystemResource resource = new FileSystemResource(file);
-	        HttpHeaders headers = new HttpHeaders();
-	        headers.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=" + fileName);
+        FileSystemResource resource = new FileSystemResource(file);
+        HttpHeaders headers = new HttpHeaders();
+        headers.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=" + fileName);
 
-	        return ResponseEntity.ok()
-	                .headers(headers)
-	                .body(resource);
-	    }
+        return ResponseEntity.ok()
+                .headers(headers)
+                .body(resource);
+    }
 
 
 }

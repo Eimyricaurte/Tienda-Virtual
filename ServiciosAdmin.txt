@@ -1,6 +1,6 @@
 ---------Servicios ADMIN
  ^^^^^^^^^^^^Gestion Usuarios
-    ********      listar (GET)
+    ********      c (GET)
    http://localhost:8081/usuario/listar/
   Respuesta
 {
@@ -115,7 +115,7 @@ http://localhost:8081/producto/buscarProductoCantidad/25
 
 ****** Buscar por una palabra o una parte de la descripcion 
                       se envia el nombre o parte de la descripcion por url
-http://localhost:8081/producto/buscarProductoNombreA/
+http://localhost:8081/producto/buscarProductoNombreA/aaa
 
 {
     "lista": [
@@ -131,7 +131,7 @@ http://localhost:8081/producto/buscarProductoNombreA/
 }
 
 ****** Editar  (PUT)
-
+http://localhost:8081/producto/update/
 Json de enviar
 {
     "codigo":1,
@@ -212,6 +212,7 @@ http://localhost:8081/venta/ventasSinPagoProducto/aaa
 ***** busqueda por usuario (GET)
                              Se envia el correo por url
 http://localhost:8081/venta/ventasSinPagoUsuario/laura.martinez@hotmail.com
+
 ***** Eliminar (DELETE)
               Se envia el id de la venta por la url
 http://localhost:8081/venta/eliminarVenta/1  

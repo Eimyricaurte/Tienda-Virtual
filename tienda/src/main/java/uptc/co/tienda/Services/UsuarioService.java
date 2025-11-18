@@ -11,6 +11,6 @@ public interface UsuarioService {
    public abstract UsuarioEntity getUsuarioId(String correo);
    public abstract UsuarioEntity updateUsuario(UsuarioEntity usuarioEntity);
    public abstract void deleteUsuario(String correo);
-   public abstract String login(String correo, String clave);
+   public abstract UsuarioEntity login(String correo, String clave);
 
 }

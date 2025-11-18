@@ -72,18 +72,9 @@ public class UsuarioServiceImplementation implements UsuarioService {
     }
 
     @Override
-    public String login(String correo, String clave){
-       try {
-            UsuarioEntity usuarioEntity = getUsuarioId(correo);
+    public UsuarioEntity login(String correo, String clave){
 
-            if (usuarioEntity.getClave().equals(clave)) {
-                return usuarioEntity.getCorreo(); // login correcto
-            } else {
-                return "Clave incorrecta"; // clave incorrecta
-            }
-        } catch (IllegalArgumentException e) {
-            // El usuario no existe
-            return "El usuario no existe";
-        }
+           return getUsuarioId(correo);
+       
     }
 }

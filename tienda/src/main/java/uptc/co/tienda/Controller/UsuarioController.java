@@ -20,6 +20,11 @@ import uptc.co.tienda.Services.Implementation.UsuarioServiceImplementation;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.io.Decoders;
+import io.jsonwebtoken.security.Keys;
+
 
 @RestController
 @RequestMapping("/usuario")
@@ -27,6 +32,8 @@ import org.slf4j.LoggerFactory;
 public class UsuarioController {
 
     	private static final Logger logger = LoggerFactory.getLogger(UsuarioController.class);
+		private static final String secretKey = "bXktc2VjdXJlLXNlY3JldC1rZXktYmFzZTY0LWF1dGg=";
+
 
     @Autowired
 	@Qualifier("usuarioServiceImplementation")
@@ -34,7 +41,26 @@ public class UsuarioController {
 
 	@PostMapping(path="/login/")
 	public UsuarioDTO login(@RequestBody LoginDTO loginDTO){
-		return new UsuarioDTO(usi.login(loginDTO.getCorreo(), loginDTO.getClave()));
+
+       try {
+            UsuarioEntity usuarioEntity = usi.login(loginDTO.getCorreo(), loginDTO.getClave());
+
+            if (usuarioEntity.getClave().equals(loginDTO.getClave())) {
+				 String token = Jwts.builder()
+                    .setSubject(loginDTO.getCorreo())
+                    .signWith(Keys.hmacShaKeyFor(Decoders.BASE64.decode(secretKey)), SignatureAlgorithm.HS256)
+                    .compact();
+
+                return new UsuarioDTO(usuarioEntity.getCorreo(), token); // login correcto
+
+            } else {
+                return new UsuarioDTO("Clave incorrecta"); // clave incorrecta
+            }
+        } catch (IllegalArgumentException e) {
+            // El usuario no existe
+            return new UsuarioDTO("El usuario no existe");
+        }
+
 	}
     
 	@GetMapping(path="/listar/",produces= MediaType.APPLICATION_JSON_VALUE)
@@ -58,7 +84,7 @@ public class UsuarioController {
 			existtingUsuario.setNombre(usuarioEntity.getNombre());
 			existtingUsuario.setClave(usuarioEntity.getClave());
 			existtingUsuario.setTelefono(usuarioEntity.getTelefono());
-			return new UsuarioDTO(usi.updateUsuario(existtingUsuario));
+			return new UsuarioDTO("Usuario editado correctamente");
 		}catch(Exception e){
 			 return new UsuarioDTO(e.getMessage());
 		}  

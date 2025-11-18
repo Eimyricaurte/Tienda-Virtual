@@ -12,11 +12,16 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.io.Decoders;
+import io.jsonwebtoken.security.Keys;
 import uptc.co.tienda.DTO.ProductoDTO;
 import uptc.co.tienda.Entities.ProductoEntity;
+import uptc.co.tienda.Services.JWT;
 import uptc.co.tienda.Services.Implementation.ProductoServiceImplementation;
 
 @RestController
@@ -25,16 +30,20 @@ import uptc.co.tienda.Services.Implementation.ProductoServiceImplementation;
 public class ProductoController {
         
     private static final Logger logger = LoggerFactory.getLogger(ProductoController.class);
+	private static final String secretKey = "bXktc2VjdXJlLXNlY3JldC1rZXktYmFzZTY0LWF1dGg=";
+
 
     @Autowired
 	@Qualifier("productoServiceImplementation")
 	private ProductoServiceImplementation psi;
 
+    private JWT jwt= new JWT();
+
     //----------listar para admin
 
     @GetMapping(path="/listar/",produces= MediaType.APPLICATION_JSON_VALUE)
 	public ProductoDTO listar(){
-        logger.info("Solicitud recibida: listar todos los productos.");
+        logger.info("Solicitud recibida: listar todos los productos.->Admin");
 		return new ProductoDTO(psi.getListProducto());
 	}
 
@@ -87,9 +96,22 @@ public class ProductoController {
  
     //---------listar catalogo usuario
     @GetMapping(path="/listarCatalogoUsuario/",produces= MediaType.APPLICATION_JSON_VALUE)
-	public ProductoDTO catalogoUsuario(){
+	public ProductoDTO catalogoUsuario(@RequestHeader(value="Authorization", required=false) String authHeader){
         logger.info("Solicitud recibida: listar catálogo de productos disponibles para usuarios.");
-		return new ProductoDTO(psi.listaProductosCatalogo());
+		
+       try {
+        //  Valida token llamando a tu clase JwtUtil
+        String username = jwt.validarToken(authHeader);
+        logger.info("Usuario autenticado: " + username);
+
+        //  Si el token es válido, devolver catálogo
+        return new ProductoDTO(psi.listaProductosCatalogo());
+
+       } catch (Exception e) {
+        //  Respuesta estándar si falla el token
+        return new ProductoDTO(e.getMessage());
+      }	
+		
 	}
 
 

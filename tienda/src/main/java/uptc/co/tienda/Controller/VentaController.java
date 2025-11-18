@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -21,6 +22,7 @@ import uptc.co.tienda.DTO.VentaDTO;
 import uptc.co.tienda.Entities.FacturaEntity;
 import uptc.co.tienda.Entities.ProductoEntity;
 import uptc.co.tienda.Entities.VentaEntity;
+import uptc.co.tienda.Services.JWT;
 import uptc.co.tienda.Services.Implementation.FacturaServiceImplementation;
 import uptc.co.tienda.Services.Implementation.ProductoServiceImplementation;
 import uptc.co.tienda.Services.Implementation.VentaServiceImplementation;
@@ -43,6 +45,7 @@ public class VentaController {
 	private ProductoServiceImplementation psi;
 
     private static final Logger logger = LoggerFactory.getLogger(VentaController.class);
+    private JWT jwt= new JWT();
 
 
    
@@ -109,22 +112,37 @@ public class VentaController {
     }
 
 // ---Ver carro
-    @GetMapping(path="/carro/{correo}",produces= MediaType.APPLICATION_JSON_VALUE)
-	public VentaDTO carro(@PathVariable String correo){
-        logger.info("Solicitud para visualizar productos del carrito.");
+   @GetMapping(path="/carro/{correo}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public VentaDTO carro(
+        @PathVariable String correo,
+        @RequestHeader(value="Authorization", required=false) String authHeader) {
 
-		FacturaEntity fact=fsi.usuarioOrderByCodigoFacturaDesc(correo);
-		if (fact == null) {
-			System.out.println("null");
-			return new VentaDTO("No hay productos en el carro");
-		}
-        else if(fact.getCodigoReferencia()==null ){
-						System.out.println("venta");
+    logger.info("Solicitud para visualizar productos del carrito.");
 
-			return new VentaDTO(fact.getListaVentaEntity());
-		}
-		return new VentaDTO("No hay productos en el carro");
-	}
+    try {
+        //  Validar token
+        String username = jwt.validarToken(authHeader);
+        logger.info("Usuario autenticado: " + username);
+
+        FacturaEntity fact = fsi.usuarioOrderByCodigoFacturaDesc(correo);
+
+        if (fact == null) {
+            System.out.println("null");
+            return new VentaDTO("No hay productos en el carro");
+        }
+        else if (fact.getCodigoReferencia() == null) {
+            System.out.println("venta");
+            return new VentaDTO(fact.getListaVentaEntity());
+        }
+
+        return new VentaDTO("No hay productos en el carro");
+
+    } catch (Exception e) {
+        //  Mensaje real del error del token
+        return new VentaDTO(e.getMessage());
+    }
+}
+
 
 // ---Eliminar producto del carro
     @DeleteMapping(path="/eliminarVenta/{idVenta}",produces= MediaType.APPLICATION_JSON_VALUE)
