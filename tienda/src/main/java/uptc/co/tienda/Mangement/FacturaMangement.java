@@ -2,6 +2,7 @@ package uptc.co.tienda.Mangement;
 
 import java.util.List;
 
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
@@ -11,6 +12,7 @@ import uptc.co.tienda.Entities.FacturaEntity;
 public interface FacturaMangement extends CrudRepository<FacturaEntity, Integer> {
 
         List<FacturaEntity> findByTotalIsNot(double total);
+        
         List<FacturaEntity> findByFechaTransaccionBetweenAndTotalNot(String fechaInicio, String fechaFin, double total);
         List<FacturaEntity> findByEstadoAndTotalNot(String estado, double total);
 

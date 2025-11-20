@@ -40,11 +40,11 @@
             mensaje.style.color = 'blue';
             
             try {
-                const res = await fetch('https://proyecto8081.loca.lt/factura/payment', {
+                const res = await fetch('https://proyecto808125.loca.lt/factura/payment', {
                     method: 'POST',
                     headers: {'Content-Type':'application/json'},
                     body: JSON.stringify({
-                        codigoFactura: 6,
+                        codigoFactura: 5,
                         usuario: { correo: 'juanperez@gmail.com' },
                         total: 10000
                     })

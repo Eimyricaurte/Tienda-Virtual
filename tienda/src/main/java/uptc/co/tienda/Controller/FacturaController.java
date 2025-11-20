@@ -27,6 +27,7 @@ import org.springframework.web.bind.annotation.RestController;
 import uptc.co.tienda.DTO.FacturaDTO;
 import uptc.co.tienda.DTO.FechaDTO;
 import uptc.co.tienda.Entities.FacturaEntity;
+import uptc.co.tienda.Entities.VentaEntity;
 import uptc.co.tienda.Services.Implementation.FacturaServiceImplementation;
 
 import org.springframework.http.HttpHeaders;
@@ -62,7 +63,7 @@ public class FacturaController {
  
     
     //Busqueda Admin
-    @GetMapping("/fecha/")
+    @PostMapping(path = "/fecha/", consumes = MediaType.APPLICATION_JSON_VALUE)
     public FacturaDTO obtenerFacturasPorFecha(@RequestBody FechaDTO fechaDTO) {
         logger.info("Solicitud para consultar facturas por rango de fechas.");
         return new FacturaDTO(fsi.obtenerFacturasPorRangoFechas(fechaDTO.getFechaInicio(), fechaDTO.getFechaFin()));
@@ -90,13 +91,21 @@ public class FacturaController {
 
         request.setCodigoReferencia(referenceCode);
         fsi.updateFactura(request);
+        FacturaEntity facturaEntity=fsi.getFacturaCodigoReferencia(referenceCode);
+
+        String descripcion="";
+        for(VentaEntity ventaEntity: facturaEntity.getListaVentaEntity()){
+                    descripcion=descripcion+"---\r\n";
+                 descripcion=descripcion+"\r\n Producto:"+ventaEntity.getProducto().getNombre();
+                
+                }
 
         // Generar firma MD5
         String signature = DigestUtils.md5Hex(apiKey + "~" + merchantId + "~" + referenceCode + "~" + amount + "~" + currency);
 
         data.put("merchantId", merchantId);
         data.put("accountId", accountId);
-        data.put("description", "Descipcion...");
+        data.put("description", descripcion);
         data.put("referenceCode", referenceCode);
         data.put("amount", amount);
         data.put("tax", "0");
@@ -104,8 +113,8 @@ public class FacturaController {
         data.put("currency", currency);
         data.put("signature", signature);
         data.put("buyerEmail", request.getUsuario().getCorreo()); //npx localtunnel --port 8081 --subdomain proyecto8081
-        data.put("responseUrl", "https://proyecto8081.loca.lt/factura/response");
-        data.put("confirmationUrl", "https://proyecto8081.loca.lt/factura/confirmation");
+        data.put("responseUrl", "https://proyecto808125.loca.lt/factura/response");
+        data.put("confirmationUrl", "https://proyecto808125.loca.lt/factura/confirmation");
 
         data.put("action", payuUrl); // URL a la que se hace POST
 

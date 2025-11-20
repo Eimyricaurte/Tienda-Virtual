@@ -92,8 +92,11 @@ public class VentaController {
     public VentaDTO saveProductoCompra(@RequestBody VentaEntity ventaEntity){
        
 		logger.info("Solicitud para registrar un producto en el carrito.");
-		FacturaEntity fact=fsi.usuarioOrderByCodigoFacturaDesc(ventaEntity.getFacturaEntity().getUsuario().getCorreo());
-       
+        ProductoEntity productoExistente=psi.getProductoCodigo(ventaEntity.getProducto().getCodigo());
+
+		if(productoExistente.getCantidad()>=ventaEntity.getCantidad()){
+			FacturaEntity fact=fsi.usuarioOrderByCodigoFacturaDesc(ventaEntity.getFacturaEntity().getUsuario().getCorreo());
+
 		if (fact == null) {
 			// Crear una factura nueva usando el usuario que viene desde la venta
 			fact = new FacturaEntity(ventaEntity.getFacturaEntity().getUsuario());
@@ -103,12 +106,16 @@ public class VentaController {
 			 fact = new FacturaEntity(fact.getUsuario());
              fact=fsi.saveFactura(fact); 
 		}
-         ProductoEntity productoExistente=psi.getProductoCodigo(ventaEntity.getProducto().getCodigo());
-		 int  cantidad=ventaEntity.getProducto().getCantidad()-ventaEntity.getCantidad();
-		 productoExistente.setCantidad(cantidad);
-		 psi.updateProducto(productoExistente);
-		 ventaEntity.setFacturaEntity(fact);
-        return new VentaDTO(vsi.saveVenta(ventaEntity));
+			 int  cantidad=productoExistente.getCantidad()-ventaEntity.getCantidad();
+			productoExistente.setCantidad(cantidad);
+			psi.updateProducto(productoExistente);
+			ventaEntity.setFacturaEntity(fact);
+			vsi.saveVenta(ventaEntity);
+			return new VentaDTO("El producto se agrego correctamente");
+
+		}
+         return new VentaDTO("No se cuenta con la cantidad solicitada, cantidad disponible: "+productoExistente.getCantidad());
+		
     }
 
 // ---Ver carro
@@ -151,7 +158,7 @@ public class VentaController {
 
 	    VentaEntity venta=vsi.getVentaId(idVenta);
 		ProductoEntity productoExistente=psi.getProductoCodigo(venta.getProducto().getCodigo());
-		 int  cantidad=venta.getProducto().getCantidad()+venta.getCantidad();
+		 int  cantidad=productoExistente.getCantidad()+venta.getCantidad();
 		 productoExistente.setCantidad(cantidad);
 		 psi.updateProducto(productoExistente);
 		 vsi.deleteVenta(idVenta);
@@ -163,20 +170,25 @@ public class VentaController {
     public VentaDTO editarProductoUsuario(@RequestBody VentaEntity ventaEntity) {
            logger.info("Solicitud para editar la cantidad de un producto en el carrito.");
 
-
 		int  cantidad=0;
 		VentaEntity venta=vsi.getVentaId(ventaEntity.getId());
 		ProductoEntity productoExistente=psi.getProductoCodigo(venta.getProducto().getCodigo());
 		if(ventaEntity.getCantidad()>venta.getCantidad()){
 
 			int cantidadAgregar= ventaEntity.getCantidad()-venta.getCantidad();
+			if(productoExistente.getCantidad()<cantidadAgregar){
+                  return new VentaDTO("No se cuenta con la cantidad solicitada, cantidad disponible: "+productoExistente.getCantidad());
+			}
 			cantidad=productoExistente.getCantidad()-cantidadAgregar;
 
 		}else if (ventaEntity.getCantidad()<venta.getCantidad()){
 			int cantidadAgregar= venta.getCantidad()-ventaEntity.getCantidad();
 			cantidad=productoExistente.getCantidad()+cantidadAgregar;
 
+		}else{
+			 return new VentaDTO("El producto no tiene ningun cambio en la cantidad");
 		}
+
 		productoExistente.setCantidad(cantidad);
 		 psi.updateProducto(productoExistente);
 		 venta.setCantidad(ventaEntity.getCantidad());

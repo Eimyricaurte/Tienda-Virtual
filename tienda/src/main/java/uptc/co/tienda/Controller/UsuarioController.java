@@ -84,6 +84,7 @@ public class UsuarioController {
 			existtingUsuario.setNombre(usuarioEntity.getNombre());
 			existtingUsuario.setClave(usuarioEntity.getClave());
 			existtingUsuario.setTelefono(usuarioEntity.getTelefono());
+			usi.updateUsuario(existtingUsuario);
 			return new UsuarioDTO("Usuario editado correctamente");
 		}catch(Exception e){
 			 return new UsuarioDTO(e.getMessage());

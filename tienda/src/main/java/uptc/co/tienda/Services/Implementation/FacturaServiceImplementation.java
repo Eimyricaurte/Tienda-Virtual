@@ -28,8 +28,6 @@ public class FacturaServiceImplementation implements FacturaService {
     @Qualifier("generarPDFAfilicacionService")
     private PdfFacturaService pdfFacturaService;
 
-
-    
  
    //listar facturas para ADMIN
     @Override
@@ -71,7 +69,14 @@ public class FacturaServiceImplementation implements FacturaService {
     "ListarFacturasEstado",
     "ListarFacturasUsuario",
     "busquedaFactura",
-    "ListarFacturaUsuarioPago"
+    "ListarFacturaUsuarioPago",
+        "VentaId",
+        "VentasSinPago",
+        "VentasSinPagoProducto",
+        "VentasSinPagoUsuario",
+        "VentasPago",
+        "VentasPagoProducto",
+        "VentasPagoUsuario"
     }, allEntries = true)
     public FacturaEntity saveFactura(FacturaEntity facturaEntity) {
         FacturaEntity factura= fm.save(facturaEntity);     
@@ -93,7 +98,14 @@ public class FacturaServiceImplementation implements FacturaService {
     "ListarFacturasEstado",
     "ListarFacturasUsuario",
     "busquedaFactura",
-    "ListarFacturaUsuarioPago"
+    "ListarFacturaUsuarioPago",
+        "VentaId",
+        "VentasSinPago",
+        "VentasSinPagoProducto",
+        "VentasSinPagoUsuario",
+        "VentasPago",
+        "VentasPagoProducto",
+        "VentasPagoUsuario"
     }, allEntries = true)
     public FacturaEntity updateFactura(FacturaEntity facturaEntity) {
         pdfFacturaService.generarPDF(facturaEntity);

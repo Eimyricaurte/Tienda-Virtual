@@ -30,7 +30,13 @@ public class VentaServiceImplementation implements VentaService {
         "VentasSinPagoUsuario",
         "VentasPago",
         "VentasPagoProducto",
-        "VentasPagoUsuario"
+        "VentasPagoUsuario",
+            "ListarFacturasUsuario",
+            "ListarFacturasConPago", 
+            "ListarFacturasPorRangoFechas",
+            "ListarFacturasEstado",
+            "ListarFacturasUsuario",
+            "busquedaFactura"
     }, allEntries = true)
     @Override
     public VentaEntity saveVenta(VentaEntity ventaEntity) {
@@ -54,7 +60,13 @@ public class VentaServiceImplementation implements VentaService {
         "VentasSinPagoUsuario",
         "VentasPago",
         "VentasPagoProducto",
-        "VentasPagoUsuario"
+        "VentasPagoUsuario",
+            "ListarFacturasUsuario",
+            "ListarFacturasConPago", 
+            "ListarFacturasPorRangoFechas",
+            "ListarFacturasEstado",
+            "ListarFacturasUsuario",
+            "busquedaFactura"
     }, allEntries = true)
     public void deleteVenta(int id){
         // Eliminar de la base de datos
@@ -69,7 +81,13 @@ public class VentaServiceImplementation implements VentaService {
         "VentasSinPagoUsuario",
         "VentasPago",
         "VentasPagoProducto",
-        "VentasPagoUsuario"
+        "VentasPagoUsuario",
+            "ListarFacturasUsuario",
+            "ListarFacturasConPago", 
+            "ListarFacturasPorRangoFechas",
+            "ListarFacturasEstado",
+            "ListarFacturasUsuario",
+            "busquedaFactura"
     }, allEntries = true)
     public void updateVentaCantidad(VentaEntity venta) {
         vm.save(venta);

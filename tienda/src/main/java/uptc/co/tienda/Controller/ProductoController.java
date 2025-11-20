@@ -91,7 +91,6 @@ public class ProductoController {
     public ProductoDTO update(@RequestBody ProductoEntity productoEntity){
         logger.info("Solicitud recibida: actualizar producto.");
 		return new ProductoDTO(psi.updateProducto(productoEntity));
-		 
     }
  
     //---------listar catalogo usuario

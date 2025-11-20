@@ -247,8 +247,8 @@ http://localhost:8081/factura/usuarioFacturas/juanperez@gmail.com
 http://localhost:8081/factura/fecha/
    Json de enviar
 {
-    "fechaInicio":"2025-11-10",
-    "fechaFin":"2025-11-15 00:47:10"
+    "fechaInicio":"2025-11-19",
+    "fechaFin":"2025-11-29"
 }
 
 ***** Buscar por estado de la transaccion (4=aprobado, 6=rechazado, 7=pendiente)
