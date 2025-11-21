@@ -113,8 +113,8 @@ public class FacturaController {
         data.put("currency", currency);
         data.put("signature", signature);
         data.put("buyerEmail", request.getUsuario().getCorreo()); //npx localtunnel --port 8081 --subdomain proyecto8081
-        data.put("responseUrl", "https://proyecto808125.loca.lt/factura/response");
-        data.put("confirmationUrl", "https://proyecto808125.loca.lt/factura/confirmation");
+        data.put("responseUrl", "https://proyecto8081.loca.lt/factura/response");
+        data.put("confirmationUrl", "https://proyecto8081.loca.lt/factura/confirmation");
 
         data.put("action", payuUrl); // URL a la que se hace POST
 
@@ -142,9 +142,17 @@ public class FacturaController {
 
     //----pagina 
      @GetMapping("/response")
-    public String response(@RequestParam Map<String, String> params) {
-        logger.info("Solicitud para mostrar el resultado de la transacción al usuario.");
-        return "Resultado de la transacción: " + params.get("transactionState");
+    public ResponseEntity<Void> response(@RequestParam Map<String, String> params) {
+        //logger.info("Solicitud para mostrar el resultado de la transacción al usuario.");
+        //return "Resultado de la transacción: " + params.get("transactionState");
+
+            logger.info("Solicitud para mostrar el resultado de la transacción al usuario.");
+
+        // Redirigir al frontend (Angular)
+        return ResponseEntity
+                .status(HttpStatus.FOUND)
+                .header("Location", "http://localhost:4200/gestion-ventas")
+                .build();
     }
 
 

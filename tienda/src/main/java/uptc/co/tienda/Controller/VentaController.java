@@ -121,8 +121,8 @@ public class VentaController {
 // ---Ver carro
    @GetMapping(path="/carro/{correo}", produces = MediaType.APPLICATION_JSON_VALUE)
     public VentaDTO carro(
-        @PathVariable String correo,
-        @RequestHeader(value="Authorization", required=false) String authHeader) {
+        @PathVariable String correo   ,
+      @RequestHeader(value="Authorization", required=false) String authHeader) {
 
     logger.info("Solicitud para visualizar productos del carrito.");
 

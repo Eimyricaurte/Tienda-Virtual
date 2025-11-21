@@ -108,7 +108,9 @@ public class FacturaServiceImplementation implements FacturaService {
         "VentasPagoUsuario"
     }, allEntries = true)
     public FacturaEntity updateFactura(FacturaEntity facturaEntity) {
-        pdfFacturaService.generarPDF(facturaEntity);
+        if(facturaEntity.getEstado()!=null){      
+           pdfFacturaService.generarPDF(facturaEntity);
+        }
         return fm.save(facturaEntity);
     }
 
