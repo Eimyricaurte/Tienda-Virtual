@@ -1,0 +1,110 @@
+:root {
+  --terracota: #D16A4A;
+  --ocre: #C9A227; 
+  --bosque: #507A63; 
+  --lila: #7F5AA2;
+  --arena: #F4E3C2;
+  --carbon: #2F2F2F;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  background: var(--bg);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--text-dark);
+  margin: 0; 
+  padding: 0; 
+}
+
+html, body {
+  margin: 0 !important;
+  padding: 0 !important;
+  box-sizing: border-box;
+}
+
+app-root, #app-root, .app-root, .main-container, .page-wrapper {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.site-header {
+  position: fixed !important;   
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  margin: 0 !important;
+  padding: 0 !important;
+  border-radius: 0 !important; 
+  box-shadow: none !important;   
+  background: var(--bosque) !important;
+  backdrop-filter: blur(4px);
+  z-index: 9999;
+}
+
+.header-inner {
+  width: 100% !important;
+  max-width: none !important;     
+  padding: 12px 18px !important; 
+  box-sizing: border-box !important;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.site-header > .container, .site-header .container-fluid {
+  width: 100% !important;
+  max-width: none !important;
+  padding: 0 18px !important;
+}
+
+main, .content, .page-content {
+  padding-top: 72px; 
+}
+
+.site-header .brand-icon,
+.site-header .brand,
+.site-header .search-wrap,
+.site-header .actions {
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+.site-footer {
+  width: 100%;
+  background: var(--bosque);  
+  color: white;
+  margin: 0 !important;
+  padding: 20px 0; 
+  box-sizing: border-box;
+  text-align: center; 
+}
+
+.footer-inner {
+  width: 100%;
+  padding: 0 18px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column; 
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.footer-bottom {
+  width: 100%;
+  padding-top: 10px;
+  font-size: 0.9rem;
+  opacity: 0.9;
+  border-top: 1px solid rgba(255,255,255,0.25);
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .footer-inner {
+    flex-direction: column;
+    text-align: center;
+    gap: 8px;
+  }
+}

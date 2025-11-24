@@ -1,0 +1,105 @@
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" routerLink="/gestion-productos/gestion-admin">
+      <div class="brand-icon">🤍</div>
+      <div class="brand-name">
+        <div class="main">Cultura y Tejido</div>
+        <div class="sub">Hecho a mano</div>
+      </div>
+    </a>
+    <nav class="actions">
+      <a class="nav-link" routerLink="/gestion-usuarios">Usuarios</a>
+      <a class="nav-link" routerLink="/gestion-productos/gestion-admin">Productos</a>
+      <a class="nav-link" routerLink="/gestion-ventas/ventas">Ventas</a>
+      <a class="nav-link" routerLink="/gestion-facturas/listar">Facturas</a>
+      <a class="logout" routerLink="/autenticacion">Cerrar sesión</a>
+    </nav>
+    <button class="burger" (click)="toggleMobile()">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-panel" *ngIf="mobileOpen">
+    <a routerLink="/gestion-usuarios">Usuarios</a>
+    <a routerLink="/gestion-productos/gestion-admin">Productos</a>
+    <a routerLink="/gestion-ventas/ventas">Ventas</a>
+    <a routerLink="/gestion-facturas/listar">Facturas</a>
+    <a routerLink="/autenticacion">Cerrar sesión</a>
+  </div>
+</header>
+<div class="listar-container">
+  <div class="filter-bar">
+    <div class="filter-row">
+      <label>
+        Fecha inicio
+        <input type="date" [(ngModel)]="fechaInicioInput" />
+      </label>
+      <label>
+        Fecha fin
+        <input type="date" [(ngModel)]="fechaFinInput" />
+      </label>
+      <label>
+        Filtrar por estado
+        <select [(ngModel)]="selectedEstado">
+          <option value="">-- Selecciona --</option>
+          <option value="4">4 — Aprobado</option>
+          <option value="6">6 — Rechazado</option>
+          <option value="7">7 — Pendiente</option>
+        </select>
+      </label>
+      <div class="filter-actions">
+        <button type="button" (click)="filtrarPorFecha()">Filtrar por fecha</button>
+        <button type="button" (click)="filtrarPorEstado()">Filtrar por estado</button>
+        <button type="button" class="secondary" (click)="volver()">Volver</button>
+      </div>
+    </div>
+    <div class="filter-help">
+      <small>Formato aceptado: inicio = YYYY-MM-DD (ej. 2025-11-10), fin = YYYY-MM-DD (ej. 2025-11-19)</small>
+    </div>
+  </div>
+  <div *ngIf="loading" class="loading">Cargando facturas...</div>
+  <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
+  <div *ngIf="!loading && facturas.length === 0 && !errorMessage" class="empty">
+    No hay facturas para mostrar.
+  </div>
+  <div class="facturas-wrap">
+    <section class="factura-card" *ngFor="let f of facturas">
+      <header class="factura-header">
+        <div class="codigo">Factura #{{ f.codigoFactura }}</div>
+        <div class="referencia" title="{{ f.codigoReferencia }}">{{ mostrarValor(f.codigoReferencia) }}</div>
+      </header>
+      <div class="factura-body">
+        <div class="fila">
+          <div class="label">Nombre:</div>
+          <div class="valor">{{ mostrarValor(f.usuario?.nombre) }}</div>
+        </div>
+        <div class="fila">
+          <div class="label">Correo:</div>
+          <div class="valor">{{ mostrarValor(f.usuario?.correo) }}</div>
+        </div>
+        <div class="fila">
+          <div class="label">Documento:</div>
+          <div class="valor">{{ mostrarValor(f.usuario?.numeroDocumento) }}</div>
+        </div>
+        <div class="fila">
+          <div class="label">Total:</div>
+          <div class="valor">{{ f.total | currency:'COP':'symbol':'1.0-0' }}</div>
+        </div>
+        <div class="fila">
+          <div class="label">Estado transacción:</div>
+          <div class="valor">{{ mostrarValor(f.estadoTransaccion) }}</div>
+        </div>
+        <div class="fila">
+          <div class="label">Código autorización:</div>
+          <div class="valor">{{ mostrarValor(f.codigoAutorizacionBanco) }}</div>
+        </div>
+        <div class="fila">
+          <div class="label">Fecha transacción:</div>
+          <div class="valor">{{ f.fechaTransaccion ? (f.fechaTransaccion) : 'No disponible' }}</div>
+        </div>
+      </div>
+      <div class="factura-actions">
+        <button type="button" (click)="descargarFactura(f.codigoFactura)">Descargar</button>
+      </div>
+    </section>
+  </div>
+</div>

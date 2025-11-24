@@ -1,0 +1,57 @@
+<div class="agregar-card">
+  <h2>Editar producto</h2>
+
+  <form [formGroup]="productoForm" (ngSubmit)="onSubmit()" class="form-grid">
+
+    <label class="field">
+      <span>Nombre</span>
+      <input formControlName="nombre" />
+      <small class="error" *ngIf="f.nombre.touched && f.nombre.invalid">
+        Nombre requerido
+      </small>
+    </label>
+
+    <label class="field full">
+      <span>Descripción</span>
+      <textarea formControlName="descripcion" rows="3"></textarea>
+    </label>
+
+    <label class="field">
+      <span>Precio (COP)</span>
+      <input type="number" formControlName="precio" min="0" />
+      <small class="error" *ngIf="f.precio.touched && f.precio.invalid">
+        Precio válido requerido
+      </small>
+    </label>
+
+    <label class="field">
+      <span>Cantidad</span>
+      <input type="number" formControlName="cantidad" min="0" />
+    </label>
+
+    <label class="field file-field full">
+      <span>Imagen</span>
+
+      <div class="file-row">
+        <input type="file" accept="image/*" (change)="onFileSelected($event)" />
+
+        <div class="img-preview" *ngIf="previewUrl">
+          <img [src]="previewUrl" alt="previsualización" />
+        </div>
+      </div>
+
+      <small class="muted">
+        Selecciona un archivo desde tu equipo.
+      </small>
+    </label>
+
+    <div class="actions">
+      <button type="submit" [disabled]="productoForm.invalid">Guardar</button>
+
+      <button type="button" class="secondary" (click)="onCancel()">
+        Cancelar
+      </button>
+    </div>
+
+  </form>
+</div>

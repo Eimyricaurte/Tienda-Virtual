@@ -1,0 +1,103 @@
+<header class="site-header">
+  <div class="header-inner">
+
+    <a class="brand" routerLink="/gestion-productos/gestion-admin" >
+  <div class="brand-icon">🤍</div>
+  <div class="brand-name">
+    <div class="main">Cultura y Tejido</div>
+    <div class="sub">Hecho a mano</div>
+  </div>
+</a>
+    <nav class="actions">
+      <a class="nav-link" routerLink="/gestion-productos" [state]="{correo: userCorreo}"><strong>Productos</strong></a>
+
+      <button class="icon-btn cart-btn" aria-label="Carrito" [routerLink]="['/gestion-ventas']" [state]="{correo: userCorreo}">
+        <span class="cart-icon">🛒</span>
+      </button>
+
+      <a class="avatar" [routerLink]="['/gestion-usuarios/mostrar-usuario']" [state]="{correo: userCorreo}" title="Mi perfil">
+        <span class="user-icon">👤</span>
+      </a>
+
+      <button class="burger" (click)="toggleMobile()" aria-label="Abrir menú móvil">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </div>
+
+  <div class="mobile-panel" [class.open]="mobileOpen">
+    <a routerLink="/gestion-productos">Productos</a>
+    <a routerLink="/gestion-ventas">Carrito</a>
+    <a routerLink="/autenticacion">Perfil</a>
+  </div>
+</header>
+
+<div class="detalle-page">
+
+  <button class="back-btn" (click)="volver()">← Volver</button>
+
+  <div *ngIf="loading" class="loader">Cargando producto…</div>
+
+  <div *ngIf="error" class="error-box">
+    {{ error }}
+  </div>
+
+  <div *ngIf="!loading && !error" class="grid-detalle">
+
+    <div class="col-img">
+      <div class="main-img-wrap">
+        <img [src]="imagenUrl()" alt="{{ producto.nombre }}" class="main-img" />
+      </div>
+    </div>
+    <div class="col-detalle">
+      <h1 class="title">{{ producto.nombre }}</h1>
+
+
+      <p class="descripcion">
+        {{ producto.descripcion }}
+      </p>
+
+      <div class="price-row">
+        <div class="price">{{ formatoPrecio(producto.precio) }}</div>
+        <div class="old-price" *ngIf="producto.precio"> </div>
+      </div>
+
+      <div class="offer-card">
+        <div class="offer-body">
+          <label>Artículos:</label>
+          <div class="selector-row">
+            <div class="qty-control">
+              <button (click)="disminuirCantidad()" [disabled]="cantidadSeleccionada<=1">-</button>
+              <input type="number" [value]="cantidadSeleccionada" readonly />
+              <button (click)="aumentarCantidad()" [disabled]="cantidadSeleccionada >= (producto.cantidad || 0)">+</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button class="add-cart"
+        (click)="addToCart()"
+        [disabled]="!producto.cantidad || producto.cantidad <= 0">
+        Añadir al carrito
+      </button>
+
+
+      <div class="extra-info">
+        <p><strong>El envío del producto se efectúa dentro de los 7 días podteriores a la compra</strong></p>
+      </div>
+    </div>
+  </div>
+  <div class="sugeridos-section" *ngIf="sugeridos?.length">
+    <h3>Te puede interesar</h3>
+    <div class="sugeridos-grid">
+      <div class="sugerido-card" *ngFor="let s of sugeridos" (click)="irADetalleSugerido(s)">
+        <img [src]="'assets/img/' + s.imagen" alt="{{ s.nombre }}" />
+        <div class="info">
+          <div class="s-name">{{ s.nombre }}</div>
+          <div class="s-price">{{ formatoPrecio(s.precio) }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

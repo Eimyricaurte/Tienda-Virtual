@@ -1,0 +1,284 @@
+.site-header {
+  width: 100%;
+  background: var(--white);
+  border-bottom: 1px solid rgba(0,0,0,0.03);
+  box-shadow: 0 4px 18px rgba(0,0,0,0.03);
+  position: sticky;
+  top: 0;
+  z-index: 30;
+}
+
+.header-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 14px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.brand-icon {
+  font-size: 24px;
+}
+
+.brand-name {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.brand-name .main {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--arena);
+}
+
+.brand-name .sub {
+  font-size: 12px;
+  color: var(--arena-claro);
+  margin-top: 2px;
+  color: var(--arena);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.actions a {
+  text-decoration: none;
+  font-weight: 600;
+  color: var(--arena);
+}
+
+
+.burger {
+  display: none;
+  background: none;
+  border: none;
+  padding: 6px;
+}
+
+
+@media (max-width: 768px) {
+  .header-inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 16px;
+    justify-content: space-between;
+  }
+
+  .brand {
+    flex: 1 1 auto;
+    min-width: 0;
+    gap: 8px;
+    align-items: center;
+  }
+
+  .brand .brand-name {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    overflow: hidden;
+  }
+
+  .brand .main {
+    font-size: 15px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .brand .sub {
+    font-size: 11px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-top: 2px;
+  }
+
+  .actions {
+    display: none;
+  }
+  .burger {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+  }
+  .burger span {
+    width: 25px;
+    height: 3px;
+    background: var(--arena);
+    border-radius: 2px;
+  }
+
+  .mobile-panel {
+    position: fixed;
+    top: 50px;
+    left: 0;
+    right: 0;
+    z-index: 60;
+    background: #fff;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    padding: 10px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .mobile-panel a {
+    display: block;
+    padding: 10px 8px;
+    text-decoration: none;
+    color: var(--bosque);
+    font-weight: 600;
+    border-radius: 6px;
+  }
+
+  .mobile-panel a:hover {
+    background: rgba(0,0,0,0.03);
+  }
+}
+.action-buttons {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+.action-buttons button {
+margin-top: 40px;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  background-color: var(--terracota);
+  color: white;
+  transition: background 0.2s;
+}
+
+.action-buttons button:hover {
+  background-color: var(--terracota);
+}
+.action-buttons {
+  margin: 20px auto;
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+.action-buttons button {
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  background-color: var(--ocre);
+  color: white;
+  transition: background 0.2s;
+}
+
+.action-buttons button:hover {
+  background-color: var(--terracota);
+}
+
+.ventas-table {
+  margin: 20px auto;
+  max-width: 95%;
+  overflow-x: auto;
+}
+
+.ventas-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.ventas-table th, .ventas-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.ventas-table th {
+  background-color: var(--bosque);
+  color: white;
+}
+
+.error {
+  color: red;
+  text-align: center;
+  margin-top: 10px;
+}
+@media (max-width: 768px) {
+
+  .action-buttons {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  .np{
+    margin-top: 40px;
+  }
+
+  .action-buttons button {
+    width: 100%;
+    max-width: 280px;
+    padding: 12px;
+    font-size: 15px;
+  }
+
+  .ventas-table table thead {
+    display: none;
+  }
+
+  .ventas-table table tr {
+    display: block;
+    margin-bottom: 16px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 12px;
+  }
+
+  .ventas-table table td {
+    display: block;
+    text-align: center;
+    padding: 10px 0;
+    font-size: 0.95rem;
+    border: none;
+    border-bottom: 1px solid #eee;
+  }
+
+  .ventas-table table td:last-child {
+    border-bottom: none;
+  }
+
+  .ventas-table table td::before {
+    content: attr(data-label);
+    display: block;
+    font-weight: bold;
+    margin-bottom: 4px;
+    color: #333;
+    font-size: 0.85rem;
+  }
+
+  .ventas-table {
+    max-width: 100%;
+    padding: 0 10px;
+  }
+}

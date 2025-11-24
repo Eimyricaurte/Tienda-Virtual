@@ -1,0 +1,71 @@
+<div class="form-container">
+  <h2>Registro de Usuario</h2>
+
+  <form (ngSubmit)="onSubmit()" #f="ngForm" autocomplete="off">
+
+    <div class="row">
+      <div class="form-group">
+        <label for="correo">Correo electrónico</label>
+        <input id="correo" name="correo" type="email"
+               [(ngModel)]="correo"
+               placeholder="Ej: TuCorreo@gmail.com" />
+      </div>
+
+      <div class="form-group">
+        <label for="documento">Número de Documento</label>
+        <input id="documento" name="numeroDocumento" type="number"
+               [(ngModel)]="numeroDocumento"
+               placeholder="Ej: 123" />
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="form-group">
+        <label for="nombre">Nombre completo</label>
+        <input id="nombre" name="nombre" type="text"
+               [(ngModel)]="nombre"
+               placeholder="Tu nombre" />
+      </div>
+
+      <div class="form-group">
+        <label for="telefono">Teléfono</label>
+        <input id="telefono" name="telefono" type="text"
+               [(ngModel)]="telefono"
+               placeholder="Ej: 233456"
+               (input)="soloNumeros($event)" />
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="form-group">
+        <label for="clave">Contraseña</label>
+        <input id="clave" name="clave" type="password"
+               [(ngModel)]="clave"
+               placeholder="Min. 6 caracteres" />
+      </div>
+
+      <div class="form-group">
+        <label for="confirmarClave">Confirmar contraseña</label>
+        <input id="confirmarClave" name="confirmarClave" type="password"
+               [(ngModel)]="confirmarClave"
+               placeholder="Vuelve a escribir la contraseña" />
+      </div>
+    </div>
+    <div *ngIf="errorMsg" style="color:#b00020; font-weight:700; margin:8px 0;">
+      {{ errorMsg }}
+    </div>
+
+    <div *ngIf="successMsg" style="color:#006400; font-weight:700; margin:8px 0;">
+      {{ successMsg }}
+    </div>
+    <button type="submit" [disabled]="loading">
+      {{ loading ? 'Guardando...' : 'Registrar' }}
+    </button>
+
+    <div class="login-link">
+      ¿Ya tienes cuenta?
+      <a routerLink="/autenticacion">Inicia sesión</a>
+    </div>
+
+  </form>
+</div>

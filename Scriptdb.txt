@@ -1,0 +1,55 @@
+-- Crear la base de datos
+CREATE DATABASE IF NOT EXISTS tiendadb;
+USE tiendadb;
+
+-- Tabla usuarios (primero, porque factura depende de esta)
+CREATE TABLE IF NOT EXISTS usuarios (
+  numeroDocumento VARCHAR(15) DEFAULT NULL,
+  correo VARCHAR(50) NOT NULL,
+  nombre VARCHAR(50) DEFAULT NULL,
+  telefono VARCHAR(50) DEFAULT NULL,
+  clave VARCHAR(50) DEFAULT NULL,
+  PRIMARY KEY (correo)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- Tabla productos (antes de ventas, ya que ventas depende de productos)
+CREATE TABLE IF NOT EXISTS productos (
+  Codigo INT NOT NULL AUTO_INCREMENT,
+  Nombre VARCHAR(100) NOT NULL,
+  Descripcion TEXT,
+  Imagen VARCHAR(255) DEFAULT NULL,
+  Precio DOUBLE NOT NULL,
+  Cantidad INT NOT NULL,
+  PRIMARY KEY (Codigo)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- Tabla factura (depende de usuarios)
+CREATE TABLE IF NOT EXISTS factura (
+  codigoFactura INT NOT NULL AUTO_INCREMENT,
+  correo VARCHAR(100) NOT NULL,
+  estadoTransaccion VARCHAR(50) DEFAULT NULL,
+  estado VARCHAR(50) DEFAULT NULL,
+  total DOUBLE DEFAULT NULL,
+  transaccionId VARCHAR(50) DEFAULT NULL,
+  ordenIdPay VARCHAR(50) DEFAULT NULL,
+  codigoAutorizacionBanco VARCHAR(50) DEFAULT NULL,
+  fechaTransaccion DATETIME DEFAULT CURRENT_TIMESTAMP,
+  codigoReferencia VARCHAR(100) DEFAULT NULL,
+  PRIMARY KEY (codigoFactura),
+  KEY Correo (correo),
+  CONSTRAINT factura_ibfk_1 FOREIGN KEY (correo) REFERENCES usuarios(correo)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- Tabla ventas (depende de factura y productos)
+CREATE TABLE IF NOT EXISTS ventas (
+  Id INT NOT NULL AUTO_INCREMENT,
+  CodigoFactura INT NOT NULL,
+  CodigoProducto INT NOT NULL,
+  Cantidad INT NOT NULL,
+  PrecioTotal DOUBLE NOT NULL,
+  PRIMARY KEY (Id),
+  KEY CodigoFactura (CodigoFactura),
+  KEY CodigoProducto (CodigoProducto),
+  CONSTRAINT ventas_ibfk_1 FOREIGN KEY (CodigoFactura) REFERENCES factura(codigoFactura),
+  CONSTRAINT ventas_ibfk_2 FOREIGN KEY (CodigoProducto) REFERENCES productos(Codigo)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;

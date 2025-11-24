@@ -1,0 +1,86 @@
+<header class="site-header">
+  <div class="header-inner">
+  <a class="brand" routerLink="/gestion-productos" >
+  <div class="brand-icon">🤍</div>
+  <div class="brand-name">
+    <div class="main">Cultura y Tejido</div>
+    <div class="sub">Hecho a mano</div>
+  </div>
+</a>
+  <div class="flex-spacer"></div>
+  <nav class="actions">
+    <a class="nav-link" routerLink="/gestion-productos" [state]="{correo: userCorreo}">Productos</a>
+    <button class="icon-btn cart-btn" aria-label="Carrito" routerLink="/carrito">
+      <span class="cart-icon">🛒</span>
+    </button>
+    <a class="avatar" [routerLink]="['/gestion-usuarios/mostrar-usuario']" [state]="{correo: userCorreo}">
+      <span class="user-icon">👤</span>
+    </a>
+    <button class="burger" (click)="toggleMobile()">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+</div>
+
+</header>
+<div class="carrito-container">
+
+  <h2 class="titulo">🛒 Tu Carrito</h2>
+
+  <div *ngIf="carrito.length === 0" class="vacio">
+    Tu carrito está vacío.
+  </div>
+<div class="carrito-items">
+
+  <div class="item" *ngFor="let item of carrito; let i = index">
+    <img class="item-img" [src]="'assets/img/' + item.producto.imagen" alt="producto" />
+
+    <div class="item-info">
+      <h3>{{ item.producto.nombre }}</h3>
+      <p>{{ item.producto.descripcion }}</p>
+
+      <div class="line cantidad-line">
+        <span>Cantidad:</span>
+
+        <div class="cantidad-controles">
+          <button class="btn-cantidad" (click)="disminuirCantidad(i)">−</button>
+
+          <strong class="cantidad">{{ item.cantidad }}</strong>
+
+          <button class="btn-cantidad" (click)="aumentarCantidad(i)">+</button>
+        </div>
+      </div>
+
+      <div class="line">
+        <span>Precio unidad:</span>
+        <strong>${{ item.producto.precio | number }}</strong>
+      </div>
+
+      <div class="line">
+        <span>Total:</span>
+        <strong class="total-item">${{ item.precioTotal | number }}</strong>
+      </div>
+
+      <button class="btn-eliminar" (click)="eliminarItem(i)">
+        🗑️ Eliminar
+      </button>
+    </div>
+  </div>
+
+</div>
+
+
+  <div class="resumen" *ngIf="carrito.length > 0">
+    <h3>Total a pagar</h3>
+    <div class="total-general">
+      $ {{ calcularTotal() | number }}
+    </div>
+
+    <button class="btn-pagar" (click)="procederPago()">
+      Proceder al pago
+    </button>
+
+
+  </div>
+
+</div>

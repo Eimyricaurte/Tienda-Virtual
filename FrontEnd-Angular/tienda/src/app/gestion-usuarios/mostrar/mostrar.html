@@ -1,0 +1,61 @@
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" routerLink="/gestion-productos/gestion-admin">
+  <div class="brand-icon">🤍</div>
+  <div class="brand-name">
+    <div class="main">Cultura y Tejido</div>
+    <div class="sub">Hecho a mano</div>
+  </div>
+</a>
+    <nav class="actions">
+      <a class="nav-link" routerLink="/gestion-usuarios">Usuarios</a>
+      <a class="nav-link" routerLink="/gestion-productos/gestion-admin">Productos</a>
+      <a class="nav-link" routerLink="/gestion-ventas/ventas">Ventas</a>
+      <a class="nav-link" routerLink="/gestion-facturas/listar">Facturas</a>
+      <a class="logout" routerLink="/autenticacion">Cerrar sesión</a>
+    </nav>
+    <button class="burger" (click)="toggleMobile()">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-panel" *ngIf="mobileOpen">
+    <a routerLink="/gestion-usuarios">Usuarios</a>
+    <a routerLink="/gestion-productos/gestion-admin">Productos</a>
+    <a routerLink="/gestion-ventas/ventas">Ventas</a>
+    <a routerLink="/gestion-facturas/listar">Facturas</a>
+    <a routerLink="/autenticacion">Cerrar sesión</a>
+  </div>
+</header>
+<div class="usuarios-container">
+  <h2 class="titulo-seccion">Usuarios registrados</h2>
+
+  <div *ngIf="listaUsuarios.length === 0" class="sin-datos">
+    No hay usuarios disponibles.
+  </div>
+
+  <table *ngIf="listaUsuarios.length > 0" class="tabla-usuarios">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Documento</th>
+        <th>Correo</th>
+        <th>Teléfono</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let user of listaUsuarios">
+        <td>{{ user.nombre }}</td>
+        <td>{{ user.numeroDocumento }}</td>
+        <td>{{ user.correo }}</td>
+        <td>{{ user.telefono }}</td>
+        <td class="acciones">
+          <button class="btn ventas" (click)="verVentas(user)">Ventas</button>
+          <button class="btn eliminar" (click)="eliminar(user)">Eliminar</button>
+        </td>
+
+      </tr>
+    </tbody>
+  </table>
+</div>

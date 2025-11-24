@@ -1,0 +1,49 @@
+<div class="login-card">
+  <div class="brand">
+    <div class="brand-icon">🤍</div>
+    <div class="brand-text">
+      <h1>Cultura y tejido</h1>
+      <p class="tag">Hecho a mano con cariño</p>
+    </div>
+  </div>
+
+  <form (ngSubmit)="onLogin()" autocomplete="off">
+
+    <div *ngIf="errorMsg" class="msg error">{{ errorMsg }}</div>
+    <div *ngIf="successMsg" class="msg success">{{ successMsg }}</div>
+
+    <div class="form-group">
+      <label for="email">Correo electrónico</label>
+      <input
+        id="email"
+        name="email"
+        type="email"
+        placeholder="tucorreo@ejemplo.com"
+        [(ngModel)]="email"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="password">Contraseña</label>
+      <input
+        id="password"
+        name="password"
+        type="password"
+        placeholder="••••••••"
+        [(ngModel)]="password"
+      />
+    </div>
+
+    <button type="submit" class="btn-login" [disabled]="loading">
+      {{ loading ? 'Iniciando...' : 'Iniciar sesión' }}
+    </button>
+
+    <div class="divider"></div>
+
+    <p class="to-register">
+      ¿No tienes cuenta?
+      <a routerLink="/gestion-usuarios/registrar">Regístrate</a>
+    </p>
+
+  </form>
+</div>

@@ -1,0 +1,59 @@
+<div class="form-container">
+  <h2>Editar Usuario</h2>
+
+  <form (submit)="onSubmit($event)">
+    <div class="form-group">
+      <label for="correo" >Correo</label>
+      <input id="correo" name="correo" type="email" placeholder="correo@example.com"
+             [(ngModel)]="form.correo" readonly/>
+    </div>
+
+    <div class="form-group">
+      <label for="numeroDocumento">Número de Documento</label>
+      <input id="numeroDocumento" name="numeroDocumento" type="text" placeholder="Documento"
+             [(ngModel)]="form.numeroDocumento" />
+    </div>
+
+    <div class="form-group">
+      <label for="nombre">Nombre</label>
+      <input id="nombre" name="nombre" type="text" placeholder="Nombre completo"
+             [(ngModel)]="form.nombre" />
+    </div>
+
+    <div class="form-group" style="position:relative;">
+      <label for="clave">Clave</label>
+      <input id="clave" name="clave"
+             [type]="showClave ? 'text' : 'password'"
+             placeholder="********"
+             [(ngModel)]="form.clave" />
+
+      <button type="button"
+              (click)="toggleMostrarClave()"
+              title="Mostrar / ocultar clave"
+              style="position:absolute; right:8px; top:32px; background:none; border:none; cursor:pointer;">
+        {{ showClave ? '🙈' : '👁️' }}
+      </button>
+
+      <div *ngIf="form.clave" style="font-size:12px; margin-top:6px; color:#666;">
+        Hay contenido en la clave.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="confirmarClave">Confirmar Clave</label>
+      <input id="confirmarClave" name="confirmarClave" [type]="showClave ? 'text' : 'password'"
+             placeholder="********" [(ngModel)]="form.confirmarClave" />
+    </div>
+
+    <div class="form-group">
+      <label for="telefono">Teléfono</label>
+      <input id="telefono" name="telefono" type="text" placeholder="987654321"
+             [(ngModel)]="form.telefono" />
+    </div>
+
+    <div *ngIf="loading">Cargando datos...</div>
+    <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
+
+    <button type="submit" class="btn-guardar">Guardar</button>
+  </form>
+</div>

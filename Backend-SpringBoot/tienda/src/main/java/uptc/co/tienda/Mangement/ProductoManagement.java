@@ -1,0 +1,25 @@
+package uptc.co.tienda.Mangement;
+
+import java.util.List;
+
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
+
+import uptc.co.tienda.Entities.ProductoEntity;
+
+@Repository("CrudProducto")
+public interface ProductoManagement extends CrudRepository<ProductoEntity, Integer> {
+
+    List<ProductoEntity> findByCantidad(int cantidad);
+    List<ProductoEntity> findByNombreContainingIgnoreCaseOrDescripcionContainingIgnoreCase(String nombre, String descripcion);
+
+
+
+    //----usuario catalogo
+         List<ProductoEntity> findByCantidadNot(int cantidad);
+         List<ProductoEntity> findByCantidadIsNotAndNombreContainingIgnoreCaseOrCantidadIsNotAndDescripcionContainingIgnoreCase(
+        int cantidad1, String nombre,int cantidad2, String descripcion);
+
+
+
+}

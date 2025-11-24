@@ -1,0 +1,283 @@
+.site-header {
+  width: 100%;
+  background: var(--white);
+  border-bottom: 1px solid rgba(0,0,0,0.03);
+  box-shadow: 0 4px 18px rgba(0,0,0,0.03);
+  position: sticky;
+  top: 0;
+  z-index: 30;
+}
+
+.header-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 14px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.brand-icon {
+  font-size: 24px;
+}
+
+.brand-name {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.brand-name .main {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--arena);
+}
+
+.brand-name .sub {
+  font-size: 12px;
+  color: var(--arena-claro);
+  margin-top: 2px;
+  color: var(--arena);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.actions a {
+  text-decoration: none;
+  font-weight: 600;
+  color: var(--arena);
+}
+
+
+.burger {
+  display: none;
+  background: none;
+  border: none;
+  padding: 6px;
+}
+
+
+@media (max-width: 768px) {
+  .header-inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 16px;
+    justify-content: space-between;
+  }
+
+  .brand {
+    flex: 1 1 auto;
+    min-width: 0;
+    gap: 8px;
+    align-items: center;
+  }
+
+  .brand .brand-name {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    overflow: hidden;
+  }
+
+  .brand .main {
+    font-size: 15px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .brand .sub {
+    font-size: 11px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-top: 2px;
+  }
+
+  .actions {
+    display: none;
+  }
+  .burger {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+  }
+  .burger span {
+    width: 25px;
+    height: 3px;
+    background: var(--arena);
+    border-radius: 2px;
+  }
+
+  .mobile-panel {
+    position: fixed;
+    top: 50px;
+    left: 0;
+    right: 0;
+    z-index: 60;
+    background: #fff;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    padding: 10px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .mobile-panel a {
+    display: block;
+    padding: 10px 8px;
+    text-decoration: none;
+    color: var(--bosque);
+    font-weight: 600;
+    border-radius: 6px;
+  }
+
+  .mobile-panel a:hover {
+    background: rgba(0,0,0,0.03);
+  }
+}
+.titulo-seccion {
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  margin-top: 60px;
+  color: #333;
+}
+
+.sin-datos {
+  padding: 1rem;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.05);
+  text-align: center;
+  font-size: 1rem;
+  color: #666;
+}
+
+.tabla-usuarios {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 8px;
+}
+
+.tabla-usuarios thead th {
+  background: #ffffff;
+  padding: 12px;
+  font-weight: 600;
+  color: #333;
+  text-align: left;
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+}
+
+.tabla-usuarios tbody tr {
+  background: #ffffff;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.06);
+  border-radius: 14px;
+}
+
+.tabla-usuarios tbody tr td:first-child {
+  border-top-left-radius: 14px;
+  border-bottom-left-radius: 14px;
+}
+
+.tabla-usuarios tbody tr td:last-child {
+  border-top-right-radius: 14px;
+  border-bottom-right-radius: 14px;
+}
+
+.tabla-usuarios td {
+  padding: 14px 16px;
+  color: #444;
+}
+
+.acciones {
+  display: flex;
+  gap: 8px;
+}
+
+.btn {
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: 0.2s ease;
+}
+
+.ventas {
+  background: var(--arena); 
+}
+
+
+.eliminar {
+  background: var(--arena); 
+}
+
+.btn:hover {
+  opacity: 0.85;
+}
+@media (max-width: 768px) {
+  
+  .tabla-usuarios thead {
+    display: none;
+  }
+
+  .tabla-usuarios tbody tr {
+    display: block;
+    padding: 16px;
+    margin-bottom: 12px;
+    border-radius: 14px;
+  }
+
+  .tabla-usuarios tbody tr td {
+    display: block;
+    text-align: center;
+    padding: 8px 0;
+    font-size: 0.95rem;
+  }
+
+  .tabla-usuarios tbody tr td::before {
+    content: attr(data-label);
+    display: block;
+    font-weight: 600;
+    margin-bottom: 4px;
+    color: #333;
+    font-size: 0.85rem;
+  }
+
+  .tabla-usuarios tbody tr td:last-child {
+    border-bottom-right-radius: 14px;
+  }
+
+  .acciones {
+    justify-content: center;
+    margin-top: 8px;
+  }
+
+  .btn {
+    font-size: 0.85rem;
+    padding: 8px 14px;
+    margin-left: 3px;
+  }
+
+  .titulo-seccion {
+    text-align: center;
+    margin-top: 50px;
+  }
+}

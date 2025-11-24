@@ -1,0 +1,53 @@
+<div class="facturas-page">
+  <header class="page-header">
+    <h1>Mis facturas</h1>
+    <p *ngIf="userCorreo" class="muted">Usuario: {{ userCorreo }}</p>
+  </header>
+
+  <main class="container">
+    <section *ngIf="loading" class="profile-card">
+      <p>Cargando facturas...</p>
+    </section>
+
+    <section *ngIf="!loading && errorMessage" class="profile-card">
+      <p class="error">{{ errorMessage }}</p>
+    </section>
+
+    <section *ngIf="!loading && !errorMessage && facturas.length === 0" class="profile-card">
+      <p>No se encontraron facturas para este usuario.</p>
+    </section>
+
+    <section *ngIf="!loading && facturas.length > 0" class="facturas-list">
+      <div *ngFor="let f of facturas" class="factura-card">
+        <div class="factura-header">
+          <h3>Factura #{{ f.codigoFactura }}</h3>
+          <span class="fecha">{{ f.fechaTransaccion ? (f.fechaTransaccion) : 'Sin fecha' }}</span>
+        </div>
+
+        <div class="factura-body">
+          <div class="row">
+            <div><strong>Referencia:</strong> {{ f.codigoReferencia || '—' }}</div>
+            <div><strong>Total:</strong> {{ f.total | number:'1.0-0' }}</div>
+          </div>
+
+          <div class="row">
+            <div><strong>Estado transacción:</strong> {{ f.estadoTransaccion || '—' }}</div>
+            <div><strong>Código autorización:</strong> {{ f.codigoAutorizacionBanco || '—' }}</div>
+          </div>
+
+          <div class="usuario-block">
+            <strong>Usuario:</strong>
+            <div class="usuario-info">
+              <div>{{ f.usuario?.nombre || '—' }}</div>
+              <div>{{ f.usuario?.correo || '—' }}</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="factura-actions">
+          <button (click)="descargarPdf(f)">Descargar</button>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>

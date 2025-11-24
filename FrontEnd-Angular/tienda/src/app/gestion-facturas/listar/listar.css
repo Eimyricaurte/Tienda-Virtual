@@ -1,0 +1,337 @@
+.site-header {
+  width: 100%;
+  background: var(--white);
+  border-bottom: 1px solid rgba(0,0,0,0.03);
+  box-shadow: 0 4px 18px rgba(0,0,0,0.03);
+  position: sticky;
+  top: 0;
+  z-index: 30;
+}
+
+.header-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 14px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.brand-icon {
+  font-size: 24px;
+}
+
+.brand-name {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.brand-name .main {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--arena);
+}
+
+.brand-name .sub {
+  font-size: 12px;
+  color: var(--arena-claro);
+  margin-top: 2px;
+  color: var(--arena);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.actions a {
+  text-decoration: none;
+  font-weight: 600;
+  color: var(--arena);
+}
+
+
+.burger {
+  display: none;
+  background: none;
+  border: none;
+  padding: 6px;
+}
+
+
+@media (max-width: 768px) {
+  .header-inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 16px;
+    justify-content: space-between;
+  }
+
+  .brand {
+    flex: 1 1 auto;
+    min-width: 0;
+    gap: 8px;
+    align-items: center;
+  }
+
+  .brand .brand-name {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    overflow: hidden;
+  }
+
+  .brand .main {
+    font-size: 15px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .brand .sub {
+    font-size: 11px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-top: 2px;
+  }
+
+  .actions {
+    display: none;
+  }
+  .burger {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+  }
+  .burger span {
+    width: 25px;
+    height: 3px;
+    background: var(--arena);
+    border-radius: 2px;
+  }
+
+  .mobile-panel {
+    position: fixed;
+    top: 50px;
+    left: 0;
+    right: 0;
+    z-index: 60;
+    background: #fff;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    padding: 10px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .mobile-panel a {
+    display: block;
+    padding: 10px 8px;
+    text-decoration: none;
+    color: var(--bosque);
+    font-weight: 600;
+    border-radius: 6px;
+  }
+
+  .mobile-panel a:hover {
+    background: rgba(0,0,0,0.03);
+  }
+
+  .listar-container {
+    margin-top: calc(60px + 56px);
+  }
+}
+
+.listar-container {
+  max-width: 1150px;
+  margin-top: 60px;
+  padding: 0 16px;
+  box-sizing: border-box;
+}
+.loading, .error, .empty {
+  text-align: center;
+  margin: 12px 0;
+  font-weight: 600;
+}
+.facturas-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 12px;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+.factura-card {
+  box-sizing: border-box;
+  flex: 0 1 calc(33.333% - 10.666px);
+  min-width: 260px; 
+  background: #fff;
+  border: 1px solid rgba(0,0,0,0.06);
+  padding: 14px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.factura-card .factura-body {
+  flex: 0 0 auto;
+}
+.factura-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 6px;
+}
+.factura-header .codigo {
+  font-weight: 700;
+  font-size: 14px;
+}
+.factura-header .referencia {
+  font-size: 12px;
+  color: #666;
+  max-width: 50%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-align: right;
+}
+.fila {
+  display: flex;
+  gap: 8px;
+  margin: 6px 0;
+  align-items: center;
+}
+.label {
+  width: 140px;
+  font-size: 13px;
+  color: #444;
+  font-weight: 600;
+}
+.valor {
+  flex: 1;
+  font-size: 13px;
+  color: #222;
+  word-break: break-word;
+}
+@media (max-width: 1024px) {
+  .factura-card {
+    flex: 0 1 calc(50% - 12px); 
+  }
+}
+
+@media (max-width: 600px) {
+  .factura-card {
+    flex: 0 1 100%; 
+  }
+  .label {
+    width: 120px;
+  }
+  .listar-container {
+    padding: 0 10px;
+  }
+}
+.factura-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 8px;
+}
+.factura-actions button {
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-weight: 700;
+  background: var(--primario, #2b8aef);
+  color: #fff;
+  transition: transform .08s ease;
+}
+.factura-actions button:active {
+  transform: translateY(1px);
+}
+.filter-bar {
+  max-width: 1150px;
+  margin: 14px auto 6px;
+  padding: 10px 16px;
+  box-sizing: border-box;
+  background: #fff;
+  border-radius: 6px;
+  border: 1px solid rgba(0,0,0,0.04);
+  box-shadow: 0 1px 6px rgba(0,0,0,0.02);
+}
+.filter-row {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.filter-row label {
+  display: flex;
+  flex-direction: column;
+  font-size: 13px;
+  color: #333;
+  font-weight: 600;
+}
+.filter-row input {
+  margin-top: 6px;
+  padding: 6px 8px;
+  border-radius: 6px;
+  border: 1px solid rgba(0,0,0,0.08);
+  min-width: 190px;
+  box-sizing: border-box;
+}
+.filter-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.filter-actions button {
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-weight: 700;
+  background: var(--primario, #2b8aef);
+  color: #fff;
+}
+.filter-actions button.secondary {
+  background: #e6e6e6;
+  color: #222;
+}
+.filter-help {
+  margin-top: 8px;
+  font-size: 12px;
+  color: #666;
+}
+@media (max-width: 600px) {
+  .filter-row {
+    gap: 8px;
+  }
+  .filter-row input {
+    min-width: 140px;
+  }
+}
+.filter-row select {
+  margin-top: 6px;
+  padding: 6px 8px;
+  border-radius: 6px;
+  border: 1px solid rgba(0,0,0,0.08);
+  min-width: 160px;
+  box-sizing: border-box;
+}

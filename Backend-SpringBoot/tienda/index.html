@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pago PayU</title>
+</head>
+<body>
+    <h1>Procesar Pago</h1>
+    <p>Haga clic en el botón para pagar con PayU</p>
+    
+    <button onclick="procesarPago()" style="padding: 10px 20px; font-size: 16px;">
+        Pagar con PayU
+    </button>
+    
+    <div id="mensaje" style="margin-top: 10px;"></div>
+
+    <!-- Formulario oculto para PayU -->
+    <form id="payuForm" method="post" action="" style="display: none;">
+        <input type="hidden" name="merchantId">
+        <input type="hidden" name="accountId">
+        <input type="hidden" name="description">
+        <input type="hidden" name="referenceCode">
+        <input type="hidden" name="amount">
+        <input type="hidden" name="tax">
+        <input type="hidden" name="taxReturnBase">
+        <input type="hidden" name="currency">
+        <input type="hidden" name="signature">
+        <input type="hidden" name="buyerEmail">
+        <input type="hidden" name="responseUrl">
+        <input type="hidden" name="confirmationUrl">
+    </form>
+
+    <script>
+        async function procesarPago() {
+            const btn = event.target;
+            const mensaje = document.getElementById('mensaje');
+            
+            btn.disabled = true;
+            btn.textContent = 'Procesando...';
+            mensaje.textContent = '';
+            mensaje.style.color = 'blue';
+            
+            try {
+                const res = await fetch('https://proyecto808125.loca.lt/factura/payment', {
+                    method: 'POST',
+                    headers: {'Content-Type':'application/json'},
+                    body: JSON.stringify({
+                        codigoFactura: 9,
+                        usuario: { correo: 'laura.martinez@hotmail.com' },
+                        total: 10000
+                    })
+                });
+                
+                if (!res.ok) throw new Error('Error en el servidor');
+                
+                const data = await res.json();
+                
+                const form = document.getElementById('payuForm');
+                form.action = data.action;
+                
+                for (const key in data) {
+                    if(form[key]) form[key].value = data[key];
+                }
+                
+                form.submit();
+                
+            } catch (error) {
+                mensaje.textContent = 'Error: ' + error.message;
+                mensaje.style.color = 'red';
+                btn.disabled = false;
+                btn.textContent = 'Pagar con PayU';
+            }
+        }
+    </script>
+</body>
+</html>

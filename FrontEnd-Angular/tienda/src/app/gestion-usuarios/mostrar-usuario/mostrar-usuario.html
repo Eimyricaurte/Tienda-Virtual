@@ -1,0 +1,74 @@
+<header class="site-header">
+  <div class="header-inner">
+
+    <a class="brand" routerLink="/gestion-productos" >
+  <div class="brand-icon">🤍</div>
+  <div class="brand-name">
+    <div class="main">Cultura y Tejido</div>
+    <div class="sub">Hecho a mano</div>
+  </div>
+</a>
+
+    <nav class="actions">
+      <a class="nav-link" routerLink="/gestion-productos" >Productos</a>
+
+      <button class="icon-btn cart-btn" aria-label="Carrito" [routerLink]="['/gestion-ventas']" [state]="{correo: userCorreo}">
+        <span class="cart-icon">🛒</span>
+      </button>
+
+      <a class="avatar" routerLink="/gestion-usuarios/mostrar-usuario" [state]="{correo: userCorreo}">
+        <span class="user-icon">👤</span>
+      </a>
+    </nav>
+    <button class="burger" (click)="toggleMobile()">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+  <div class="mobile-panel" [class.open]="mobileOpen">
+    <a routerLink="/gestion-productos">Productos</a>
+    <a routerLink="/gestion-ventas">Carrito</a>
+    <a routerLink="/autenticacion">Perfil</a>
+  </div>
+</header>
+
+<div class="profile-page">
+
+  <main class="container">
+    <section class="profile-card" *ngIf="loading">
+      <p>Cargando perfil...</p>
+    </section>
+
+    <section class="profile-card" *ngIf="!loading && errorMessage">
+      <p class="error">{{ errorMessage }}</p>
+    </section>
+
+    <section class="profile-card" *ngIf="!loading && usuario">
+      <div class="avatar-area">
+        <div class="avatar-per">👤</div>
+        <div class="name-and-mail">
+          <h2 class="nombre">{{ usuario.nombre || '—' }}</h2>
+          <p class="correo">{{ usuario.correo }}</p>
+        </div>
+      </div>
+
+      <div class="profile-details">
+        <div class="detail-row">
+          <span class="label">Número documento</span>
+          <span class="value">{{ usuario.numeroDocumento || '—' }}</span>
+        </div>
+        <div class="detail-row">
+          <span class="label">Teléfono</span>
+          <span class="value">{{ usuario.telefono || '—' }}</span>
+        </div>
+      </div>
+
+      <div class="profile-actions">
+        <button (click)="editarUsuario()">Editar perfil</button>
+        <button [routerLink]="['/gestion-facturas']" [state]="{ correo: userCorreo }">Ver facturas</button>
+        <button (click)="eliminarUsuario()">Eliminar cuenta</button>
+        <button [routerLink]="['/autenticacion']">Cerrar sesión</button>
+      </div>
+    </section>
+  </main>
+</div>

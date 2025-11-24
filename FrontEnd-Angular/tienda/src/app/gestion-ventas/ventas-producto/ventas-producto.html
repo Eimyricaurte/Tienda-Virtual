@@ -1,0 +1,59 @@
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" routerLink="/gestion-productos/gestion-admin" >
+  <div class="brand-icon">🤍</div>
+  <div class="brand-name">
+    <div class="main">Cultura y Tejido</div>
+    <div class="sub">Hecho a mano</div>
+  </div>
+</a>
+    <nav class="actions">
+      <a class="nav-link" routerLink="/gestion-usuarios">Usuarios</a>
+      <a class="nav-link" routerLink="/gestion-productos/gestion-admin">Productos</a>
+      <a class="nav-link" routerLink="/gestion-ventas/ventas">Ventas</a>
+      <a class="nav-link" routerLink="/gestion-facturas/listar">Facturas</a>
+      <a class="logout" routerLink="/autenticacion">Cerrar sesión</a>
+    </nav>
+    <button class="burger" (click)="toggleMobile()">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-panel" *ngIf="mobileOpen">
+    <a routerLink="/gestion-usuarios">Usuarios</a>
+    <a routerLink="/gestion-productos/gestion-admin">Productos</a>
+    <a routerLink="/gestion-ventas/ventas">Ventas</a>
+    <a routerLink="/gestion-facturas/listar">Facturas</a>
+    <a routerLink="/autenticacion">Cerrar sesión</a>
+  </div>
+</header>
+<div class="action-buttons">
+  <button class="np" (click)="sinPago()">Sin pago</button>
+  <button class="pago" (click)="pago()">Pago</button>
+</div>
+<div *ngIf="ventas.length > 0" class="ventas-table">
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Producto</th>
+        <th>Cantidad</th>
+        <th>Precio Total</th>
+        <th>Usuario</th>
+        <th>Correo</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let venta of ventas">
+        <td>{{ venta.id }}</td>
+        <td>{{ venta.producto.nombre }}</td>
+        <td>{{ venta.cantidad }}</td>
+        <td>{{ venta.precioTotal | currency:'COP':'symbol':'1.0-0' }}</td>
+        <td>{{ venta.facturaEntity.usuario.nombre }}</td>
+        <td>{{ venta.facturaEntity.usuario.correo }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div *ngIf="loading">Cargando ventas...</div>
+<div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>

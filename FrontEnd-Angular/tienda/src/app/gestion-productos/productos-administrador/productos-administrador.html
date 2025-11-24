@@ -1,0 +1,73 @@
+<header class="site-header">
+  <div class="header-inner">
+
+    <a class="brand" routerLink="/gestion-productos/gestion-admin" (click)="refrescar()">
+  <div class="brand-icon">🤍</div>
+  <div class="brand-name">
+    <div class="main">Cultura y Tejido</div>
+    <div class="sub">Hecho a mano</div>
+  </div>
+</a>
+<div class="search-wrap">
+  <input 
+    type="search" 
+    placeholder="Buscar productos..." 
+    [(ngModel)]="textoBusqueda"
+  />
+  <button class="search-btn" (click)="buscarPorNombre()">Buscar</button>
+</div>
+
+    <nav class="actions">
+
+      <a class="nav-link" routerLink="/gestion-usuarios">Usuarios</a>
+      <a class="nav-link" routerLink="/gestion-productos/gestion-admin" (click)="refrescar()">Productos</a>
+      <a class="nav-link" routerLink="/gestion-ventas/ventas">Ventas</a>
+      <a class="nav-link" routerLink="/gestion-facturas/listar">Facturas</a>
+
+      <a class="logout" routerLink="/autenticacion">
+        Cerrar sesión
+      </a>
+    </nav>
+
+    <button class="burger" (click)="toggleMobile()">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="mobile-panel" [class.open]="panelAbierto">
+  <a routerLink="/gestion-usuarios">Usuarios</a>
+  <a routerLink="/gestion-productos/gestion-admin">Productos</a>
+  <a routerLink="/gestion-ventas/ventas">Ventas</a>
+  <a routerLink="/gestion-facturas/listar">Facturas</a>
+  <a routerLink="/autenticacion">Cerrar sesión</a>
+</div>
+
+
+  </div>
+</header>
+
+<div class="barra-superior">
+  <button class="btn-crear" (click)="irCrearProducto()">➕ Crear producto</button>
+  <button class="btn-alerta" (click)="buscarPocoStock()">¡Se están acabando!</button>
+  <button class="btn-alerta" (click)="buscarNoStock()">¡Se acabó!</button>
+</div>
+
+<div class="contenedor-productos">
+
+  <div class="producto-card" *ngFor="let p of productos">
+
+    <img class="producto-img" [src]="'assets/img/' + p.imagen" alt="producto">
+
+    <h3>{{ p.nombre }}</h3>
+
+    <p class="precio">$ {{ p.precio }}</p>
+    <p>Cantidad: 
+      {{ p.cantidad >= 0 ? p.cantidad : 'Insuficiente' }}
+    </p>
+
+
+    <button (click)="editar(p)">Editar</button>
+    <button class="eliminar-btn" (click)="eliminarProducto(p.codigo)">Eliminar</button>
+    <button (click)="verVentasProducto(p)">Ventas</button>
+
+  </div>
+
+</div>
